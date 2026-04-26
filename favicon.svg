@@ -1,0 +1,21 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="primary" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff0000" />
+      <stop offset="100%" stop-color="#8B0000" />
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="#080808" rx="120" />
+  <polygon points="256,50 435,150 435,362 256,462 77,362 77,150" fill="none" stroke="#ff0000" stroke-width="8" opacity="0.2" />
+  <path d="M 256 110 L 370 256 L 256 402 L 142 256 Z" fill="none" stroke="url(#primary)" stroke-width="16" filter="url(#neonGlow)" />
+  <path d="M 256 145 L 340 256 L 256 367 L 172 256 Z" fill="none" stroke="#ff0000" stroke-width="6" opacity="0.6" />
+  <text x="256" y="315" fill="#ededed" font-family="'Poppins', sans-serif" font-weight="700" font-size="160" text-anchor="middle" letter-spacing="2">AW</text>
+  <circle cx="256" cy="256" r="215" fill="none" stroke="#ededed" stroke-width="3" stroke-dasharray="10 30" opacity="0.3" />
+</svg>

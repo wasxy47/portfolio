@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Wasay</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons (Updated for X Logo) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
+</head>
+
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Background Global Neural Network Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Fire Canvas for Cursor -->
+    <canvas id="fire-canvas"></canvas>
+
+    <!-- Cinematic Preloader -->
+    <div id="preloader">
+        <div class="intro-container">
+            <div class="falling-letters-wrapper">
+                <div class="falling-main" id="falling-main"></div>
+                <div class="falling-reflection" id="falling-reflection"></div>
+            </div>
+            <div class="intro-role-reveal">
+                <h3 class="intro-role">GENERATIVE AI ENGINEER</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="header">
+        <a href="#home" class="logo" style="display: flex; align-items: center; gap: 1rem;">
+            <img src="favicon.svg?v=3" alt="AW Logo" style="width: 45px; height: 45px; border-radius: 8px;">
+            <div>
+                <span class="logo-text">PORT</span><span class="logo-highlight">FOLIO.</span>
+            </div>
+        </a>
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <nav class="navbar">
+            <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-content" data-aos="fade-right" data-aos-duration="1500">
+            <h1 class="hero-title">
+                <span class="hero-name">ABDUL WASAY</span>
+                <span class="hero-role">GENERATIVE AI ENGINEER</span>
+            </h1>
+            <p>Building intelligent AI agents, advanced RAG pipelines, and scalable LLM applications. Turning complex machine learning concepts into high-performance, real-world solutions.</p>
+            <div class="hero-btns" style="margin-top: 2.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                <a href="#contact" class="btn">Hire Me</a>
+                <a href="#" class="btn" download><i class="fas fa-download"></i> Download CV</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="holographic-datapad-container" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="holographic-datapad" id="about-datapad">
+                <!-- Decorative Corner Brackets -->
+                <div class="bracket top-left"></div>
+                <div class="bracket top-right"></div>
+                <div class="bracket bottom-left"></div>
+                <div class="bracket bottom-right"></div>
+
+                <div class="datapad-header">
+                    <h2 class="heading">About <span>Me</span></h2>
+                    <div class="status-indicator">
+                        <span class="blinking-dot"></span> STATUS: ONLINE
+                    </div>
+                </div>
+
+                <div class="datapad-body">
+                    <div class="system-log">
+                        <span class="log-prefix">> SYSTEM_LOG: ROLE</span>
+                        <p>Software Engineering student with a strong focus on Generative AI, RAG (Retrieval-Augmented Generation), and LLMs. I don’t just learn theory—I build real projects.</p>
+                    </div>
+
+                    <div class="system-log">
+                        <span class="log-prefix">> SYSTEM_LOG: CORE_FOCUS</span>
+                        <ul>
+                            <li>Building RAG-based applications combining LLMs with external data.</li>
+                            <li>Experimenting with LLM fine-tuning & prompt engineering.</li>
+                            <li>Exploring Agentic AI workflows with tool-calling capabilities.</li>
+                        </ul>
+                    </div>
+
+                    <div class="system-log">
+                        <span class="log-prefix">> SYSTEM_LOG: FOUNDATION</span>
+                        <p>Actively strengthening foundation in Machine Learning and Deep Learning—from classic ML algorithms to neural networks to design robust, practical solutions.</p>
+                    </div>
+
+                    <div class="system-log">
+                        <span class="log-prefix">> SYSTEM_LOG: MISSION</span>
+                        <p>I share my work on GitHub and treat every project as proof of work. For me, it’s about building efficient systems, clean Python code, and AI projects that solve real problems. <span class="terminal-cursor">_</span></p>
+                    </div>
+
+                    <!-- GitHub Stats Matrix -->
+                    <div class="system-log git-matrix" style="margin-top: 2rem; border-top: 1px dashed rgba(255, 0, 0, 0.3); padding-top: 1.5rem;">
+                        <span class="log-prefix">> SYSTEM_LOG: GITHUB_ACTIVITY</span>
+                        <div class="github-stats-container" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+                            <!-- Activity Graph -->
+                            <img src="https://github-readme-activity-graph.vercel.app/graph?username=wasxy47&bg_color=0f0f0f&color=ff0000&line=ff0000&point=ffffff&area=true&hide_border=true" alt="Wasay's GitHub Activity Graph" style="max-width: 100%; border: 1px solid rgba(255, 0, 0, 0.2); border-radius: 8px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);">
+                            <!-- Contribution Grid -->
+                            <div style="width: 100%; overflow: hidden; border: 1px solid rgba(255, 0, 0, 0.2); border-radius: 8px; box-shadow: 0 0 15px rgba(249, 2, 2, 0.1); padding: 1rem; background: #0f0f0f; display: flex; justify-content: center; align-items: center;">
+                                <img src="https://ghchart.rshah.org/ff0000/wasxy47" alt="Wasay's GitHub Contribution Grid" style="max-width: 100%; filter: invert(0.87) hue-rotate(180deg) saturate(3.5) brightness(0.9) contrast(1.2);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section class="experience" id="experience" style="padding-bottom: 2rem;">
+        <h2 class="heading" data-aos="fade-down">System <span>History</span></h2>
+        
+        <div class="history-timeline">
+            <!-- Timeline Item 1 -->
+            <div class="history-item" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="100">
+                <div class="history-dot"></div>
+                <div class="holographic-datapad history-datapad">
+                    <div class="bracket top-left"></div><div class="bracket top-right"></div>
+                    <div class="bracket bottom-left"></div><div class="bracket bottom-right"></div>
+                    
+                    <div class="datapad-header" style="border-bottom: 1px dashed rgba(255, 0, 0, 0.4); padding-bottom: 1rem;">
+                        <h3><i class="fas fa-network-wired" style="color: var(--main-color); margin-right: 8px;"></i> Neuro-AGI</h3>
+                        <span class="history-date">Dec 2025 - Present</span>
+                    </div>
+                    <div class="datapad-body" style="padding-top: 1rem;">
+                        <span class="log-prefix">> ROLE: Internship (Machine Learning & GenAI)</span>
+                        <p style="margin-top: 5px;">Actively learning and working on deep Machine Learning concepts and Generative AI architectures. Executing hands-on AI models and neural workflows.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline Item 2 -->
+            <div class="history-item" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="100">
+                <div class="history-dot"></div>
+                <div class="holographic-datapad history-datapad">
+                    <div class="bracket top-left"></div><div class="bracket top-right"></div>
+                    <div class="bracket bottom-left"></div><div class="bracket bottom-right"></div>
+                    
+                    <div class="datapad-header" style="border-bottom: 1px dashed rgba(255, 0, 0, 0.4); padding-bottom: 1rem;">
+                        <h3><i class="fas fa-university" style="color: var(--main-color); margin-right: 8px;"></i> Iqra University</h3>
+                        <span class="history-date">2023 - 2027</span>
+                    </div>
+                    <div class="datapad-body" style="padding-top: 1rem;">
+                        <span class="log-prefix">> EDUCATION: BS Software Engineering</span>
+                        <p style="margin-top: 5px;">Core focus on robust software development principles, data structures, algorithm design, scaling complex systems, and integrating AI.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <h2 class="heading" data-aos="fade-down">My <span>Skills</span></h2>
+        <div class="skills-content">
+            <!-- Left Side: Skills List -->
+            <div class="skills-list" data-aos="fade-right" data-aos-duration="1500">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Python / PyTorch</span>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">LLMs / LangChain / RAG</span>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Machine Learning Algorithms</span>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Prompt Engineering / Fine-Tuning</span>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Vector DBs / Semantic Search</span>
+                        <span class="skill-percent">75%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Agentic Workflows / APIs</span>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">React / Frontend / UI</span>
+                        <span class="skill-percent">40%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span class="skill-name">Docker / Deployment</span>
+                        <span class="skill-percent">60%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
+                </div>
+            </div>
+
+            <!-- Right Side: 3D Globe -->
+            <div class="skills-globe-container" data-aos="zoom-in" data-aos-duration="1500">
+                <!-- 3D Wireframe Canvas -->
+                <canvas id="globe-canvas"></canvas>
+                <!-- 3D TagCloud goes here -->
+                <div class="tagcloud"></div>
+            </div>
+        </div>
+
+        <!-- Scrolling Logos Marquee -->
+        <div class="skills-marquee">
+            <div class="marquee-track">
+                <!-- Logos injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="heading" data-aos="fade-down">Latest <span>Projects</span></h2>
+        
+        <div class="projects-wrapper">
+            <!-- Left Side: Interactive Quick Links List -->
+            <div class="projects-list" data-aos="fade-right" data-aos-duration="1500">
+                <a href="https://github.com/wasxy47/ADK_Negotiating_Agent" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-handshake"></i></div>
+                    <div class="info">
+                        <h3>ADK Negotiating</h3>
+                        <p>Intelligent AI agent designed for automated negotiations.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/wasxy47/docker-flask-redis-boilerplate" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-server"></i></div>
+                    <div class="info">
+                        <h3>Docker Stack</h3>
+                        <p>A robust boilerplate utilizing Docker, Flask, and Redis.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/wasxy47/RAG_Comparison_System" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-balance-scale"></i></div>
+                    <div class="info">
+                        <h3>RAG System</h3>
+                        <p>A comprehensive system comparing Retrieval-Augmented Gen models.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/wasxy47/ai-news-researcher" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="info">
+                        <h3>AI News Agent</h3>
+                        <p>Automated research tool for gathering and summarizing AI news.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/wasxy47/Smart_Career_Advisor" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="info">
+                        <h3>Career Advisor</h3>
+                        <p>A smart advisor leveraging AI for career path recommendations.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/wasxy47/Medical_LLM_FineTuning_Colab" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-notes-medical"></i></div>
+                    <div class="info">
+                        <h3>Medical LLM</h3>
+                        <p>Fine-tuning Large Language Models for medical domain knowledge.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/wasxy47/local_llm_chat" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-comments"></i></div>
+                    <div class="info">
+                        <h3>Local LLM Chat</h3>
+                        <p>A secure, local chat interface for interacting with LLMs.</p>
+                    </div>
+                </a>
+                <a href="https://github.com/wasxy47/presidio-demo" target="_blank" class="project-list-item">
+                    <div class="icon"><i class="fas fa-user-secret"></i></div>
+                    <div class="info">
+                        <h3>Presidio Demo</h3>
+                        <p>A demonstration of data anonymization and PII removal.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Right Side: The Fanned Deck -->
+            <div class="portfolio-container" data-aos="fade-left" data-aos-duration="1500">
+            
+            <!-- Card 1 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-handshake"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left"><span>A</span><span>&spades;</span></div>
+                        <div class="card-content">
+                            <h4>ADK Negotiating</h4>
+                            <p>Intelligent AI agent designed for automated negotiations.</p>
+                            <a href="https://github.com/wasxy47/ADK_Negotiating_Agent" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right"><span>A</span><span>&spades;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-server"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left red-suit"><span>K</span><span>&hearts;</span></div>
+                        <div class="card-content">
+                            <h4>Docker Stack</h4>
+                            <p>A robust boilerplate utilizing Docker, Flask, and Redis.</p>
+                            <a href="https://github.com/wasxy47/docker-flask-redis-boilerplate" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right red-suit"><span>K</span><span>&hearts;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-balance-scale"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left"><span>Q</span><span>&clubs;</span></div>
+                        <div class="card-content">
+                            <h4>RAG System</h4>
+                            <p>A comprehensive system comparing Retrieval-Augmented Gen models.</p>
+                            <a href="https://github.com/wasxy47/RAG_Comparison_System" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right"><span>Q</span><span>&clubs;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-newspaper"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left red-suit"><span>J</span><span>&diams;</span></div>
+                        <div class="card-content">
+                            <h4>AI News Agent</h4>
+                            <p>Automated research tool for gathering and summarizing AI news.</p>
+                            <a href="https://github.com/wasxy47/ai-news-researcher" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right red-suit"><span>J</span><span>&diams;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-user-graduate"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left"><span>10</span><span>&spades;</span></div>
+                        <div class="card-content">
+                            <h4>Career Advisor</h4>
+                            <p>A smart advisor leveraging AI for career path recommendations.</p>
+                            <a href="https://github.com/wasxy47/Smart_Career_Advisor" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right"><span>10</span><span>&spades;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-notes-medical"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left red-suit"><span>9</span><span>&hearts;</span></div>
+                        <div class="card-content">
+                            <h4>Medical LLM</h4>
+                            <p>Fine-tuning Large Language Models for medical domain knowledge.</p>
+                            <a href="https://github.com/wasxy47/Medical_LLM_FineTuning_Colab" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right red-suit"><span>9</span><span>&hearts;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-comments"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left"><span>8</span><span>&clubs;</span></div>
+                        <div class="card-content">
+                            <h4>Local LLM Chat</h4>
+                            <p>A secure, local chat interface for interacting with LLMs.</p>
+                            <a href="https://github.com/wasxy47/local_llm_chat" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right"><span>8</span><span>&clubs;</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="portfolio-card-container">
+                <div class="portfolio-card">
+                    <div class="card-face card-front">
+                        <div class="card-border"></div>
+                        <div class="card-emblem"><i class="fas fa-user-secret"></i></div>
+                    </div>
+                    <div class="card-face card-back">
+                        <div class="card-rank top-left red-suit"><span>7</span><span>&diams;</span></div>
+                        <div class="card-content">
+                            <h4>Presidio Demo</h4>
+                            <p>A demonstration of data anonymization and PII removal.</p>
+                            <a href="https://github.com/wasxy47/presidio-demo" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                        <div class="card-rank bottom-right red-suit"><span>7</span><span>&diams;</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- End of .portfolio-container -->
+        </div> <!-- End of .projects-wrapper -->
+    </section>
+
+    <!-- Contact Section: Secure Uplink Terminal -->
+    <section class="contact" id="contact">
+        <h2 class="heading" data-aos="fade-down">Secure <span>Uplink</span></h2>
+        
+        <div class="uplink-container">
+            <!-- Left Panel: Radar & Status -->
+            <div class="uplink-status" data-aos="fade-right" data-aos-duration="1500">
+                <div class="radar-container">
+                    <div class="radar"></div>
+                    <div class="radar-sweep"></div>
+                    <div class="radar-blip"></div>
+                </div>
+                <div class="status-info">
+                    <h3 class="glitch-text" data-text="SYSTEM ONLINE">SYSTEM ONLINE</h3>
+                    <p class="terminal-line">> AWAITING_CONNECTION...</p>
+                    <p class="terminal-line">> TARGET: ABDUL WASAY</p>
+                    <p class="terminal-line">> LOCATION: <span class="highlight">KARACHI, PAKISTAN</span></p>
+                    <p class="terminal-line">> EMAIL: <span class="highlight">abdulwasay2019kk@gmail.com</span></p>
+                </div>
+            </div>
+
+            <!-- Right Panel: Encrypted Form -->
+            <div class="uplink-form-container" data-aos="fade-left" data-aos-duration="1500">
+                <div class="laser-scanner"></div>
+                <form action="https://formspree.io/f/mojybekq" method="POST" id="secure-form" class="secure-form">
+                    <div class="terminal-header">
+                        <span>// ENCRYPTED_CHANNEL</span>
+                        <div class="status-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="name" data-original="> ENTER_NAME_">> ENTER_NAME_</label>
+                            <input type="text" id="name" name="name" required autocomplete="off">
+                        </div>
+                        <div class="input-group">
+                            <label for="email" data-original="> ENTER_EMAIL_">> ENTER_EMAIL_</label>
+                            <input type="email" id="email" name="email" required autocomplete="off">
+                        </div>
+                    </div>
+                    
+                    <div class="input-group full-width">
+                        <label for="subject" data-original="> TRANSMISSION_SUBJECT_">> TRANSMISSION_SUBJECT_</label>
+                        <input type="text" id="subject" name="subject" required autocomplete="off">
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="message" data-original="> MESSAGE_PAYLOAD_">> MESSAGE_PAYLOAD_</label>
+                        <textarea id="message" name="message" cols="30" rows="5" required autocomplete="off"></textarea>
+                    </div>
+
+                    <button type="submit" class="cyber-btn">
+                        <span class="btn-text">INITIATE TRANSMISSION</span>
+                        <span class="btn-glitch"></span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#home" class="logo">
+                    <span class="logo-text">PORT</span><span class="logo-highlight">FOLIO.</span>
+                </a>
+                <p>Designing the future of intelligent systems.</p>
+            </div>
+            <div class="footer-social">
+                <a href="https://github.com/wasxy47" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/abdul-wasay-sheikh-xox/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://x.com/wasxy_47" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="mailto:abdulwasay2019kk@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026 by Abdul Wasay | All Rights Reserved.</p>
+            </div>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home" class="scroll-top-btn">
+                <i class="fas fa-chevron-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Typed.js for amazing typing animation -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- TagCloud for 3D Sphere -->
+    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
