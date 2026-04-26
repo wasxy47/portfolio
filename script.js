@@ -3,8 +3,12 @@ $(document).ready(function () {
     // ============================================
     // Real Canvas Fire Cursor Animation
     // ============================================
+    // ============================================
+    // Fire Cursor — Desktop ONLY (mobile pe disable)
+    // ============================================
+    const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     const canvas = document.getElementById('fire-canvas');
-    if (canvas) {
+    if (canvas && !isTouchDevice) {
         const ctx = canvas.getContext('2d');
 
         function resizeCanvas() {
@@ -15,66 +19,52 @@ $(document).ready(function () {
         resizeCanvas();
 
         let particles = [];
-        let mouseX = 0;
-        let mouseY = 0;
-        let isMoving = false;
+        let mouseX = 0, mouseY = 0, isMoving = false;
 
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             isMoving = true;
-
-            // Jb mouse move ho tou 3 particles emit kardo (optimized from 4 to reduce lag but keep visual)
-            for (let i = 0; i < 3; i++) {
+            // Sirf 2 particles per move (was 3)
+            for (let i = 0; i < 2; i++) {
                 particles.push(new FireParticle(mouseX, mouseY));
             }
         });
 
-        // Jb ruky hwe hon tab bhi choti c flame banay rakhein
         setInterval(() => {
             if (!isMoving && mouseX > 0 && mouseY > 0) {
                 particles.push(new FireParticle(mouseX, mouseY));
             }
             isMoving = false;
-        }, 50);
+        }, 80); // 80ms interval (was 50ms)
 
         class FireParticle {
             constructor(x, y) {
-                this.x = x + (Math.random() * 10 - 5);  // Mouse ky ird-gird random start
+                this.x = x + (Math.random() * 10 - 5);
                 this.y = y + (Math.random() * 10 - 5);
-                this.size = Math.random() * 12 + 10;      // Start body size
-                this.vx = (Math.random() * 2 - 1) * 0.5; // Thora sa right / left drift
-                this.vy = (Math.random() * -3 - 1);      // Hamesha UP (upar) move kare
-                this.life = 1;                           // 1 se start ho kar 0 pe destroy
-                this.decay = Math.random() * 0.03 + 0.02;// Jal ker bujhne ki speed
+                this.size = Math.random() * 10 + 8;
+                this.vx = (Math.random() * 2 - 1) * 0.5;
+                this.vy = (Math.random() * -3 - 1);
+                this.life = 1;
+                this.decay = Math.random() * 0.04 + 0.025; // Faster decay = less particles alive
             }
-
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.size -= 0.3; // size chota hoga uper jaty we
+                this.size -= 0.35;
                 this.life -= this.decay;
             }
-
             draw() {
-                ctx.globalCompositeOperation = 'lighter'; // Is se fire glowing lagti hai
+                ctx.globalCompositeOperation = 'lighter';
                 ctx.beginPath();
-
-                // Color fading logic: Center hot(yellow/white) -> Orange -> Red out
-                let color;
-                if (this.life > 0.7) {
-                    color = `rgba(255, 230, 150, ${this.life})`;
-                } else if (this.life > 0.4) {
-                    color = `rgba(255, 120, 0, ${this.life})`;
-                } else {
-                    color = `rgba(255, 20, 0, ${this.life})`;
-                }
-
-                // Blur aur glow effect radial gradient ka faida laike
+                let color = this.life > 0.7
+                    ? `rgba(255,230,150,${this.life})`
+                    : this.life > 0.4
+                    ? `rgba(255,120,0,${this.life})`
+                    : `rgba(255,20,0,${this.life})`;
                 const glow = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
                 glow.addColorStop(0, color);
-                glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
+                glow.addColorStop(1, 'rgba(0,0,0,0)');
                 ctx.fillStyle = glow;
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -82,40 +72,39 @@ $(document).ready(function () {
         }
 
         function animateFire() {
-            // Clear canvas slowly banata hai tails smudging, but pure clear rakhein tou individual laptein (flames) theek lagti hain
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            for (let i = 0; i < particles.length; i++) {
+            // Max 80 particles at once
+            if (particles.length > 80) particles.splice(0, particles.length - 80);
+            for (let i = particles.length - 1; i >= 0; i--) {
                 particles[i].update();
-                // Agar size chota hojaye ya dead, array se nikal do
                 if (particles[i].size <= 0 || particles[i].life <= 0) {
                     particles.splice(i, 1);
-                    i--;
                 } else {
                     particles[i].draw();
                 }
             }
             requestAnimationFrame(animateFire);
         }
-
-        // Fire on kardo
         animateFire();
+    } else if (canvas) {
+        // Mobile pe canvas hide kardo
+        canvas.style.display = 'none';
     }
     // ============================================
     // Neural Network Particle Animation for Hero Section
+    // ============================================
+    // ============================================
+    // Neural Network Particles — Mobile pe halka
     // ============================================
     const bgCanvas = document.getElementById('bg-canvas');
     if (bgCanvas) {
         const hCtx = bgCanvas.getContext('2d');
         let hWidth, hHeight;
         let heroParticles = [];
+        const isMobile = window.innerWidth <= 768;
 
-        // Mouse interaction
-        let hMouse = {
-            x: null,
-            y: null,
-            radius: 150 // Connection radius for mouse
-        };
+        // Mobile pe mouse interaction nahi hogi
+        let hMouse = { x: null, y: null, radius: isMobile ? 0 : 150 };
 
         function resizeBgCanvas() {
             hWidth = window.innerWidth;
@@ -123,96 +112,83 @@ $(document).ready(function () {
             bgCanvas.width = hWidth;
             bgCanvas.height = hHeight;
         }
-
         window.addEventListener('resize', resizeBgCanvas);
         resizeBgCanvas();
 
-        document.addEventListener('mousemove', function (e) {
-            hMouse.x = e.clientX;
-            hMouse.y = e.clientY;
-        });
-
-        document.addEventListener('mouseleave', function () {
-            hMouse.x = null;
-            hMouse.y = null;
-        });
+        if (!isTouchDevice) {
+            document.addEventListener('mousemove', function (e) {
+                hMouse.x = e.clientX;
+                hMouse.y = e.clientY;
+            });
+            document.addEventListener('mouseleave', function () {
+                hMouse.x = null;
+                hMouse.y = null;
+            });
+        }
 
         class HeroParticle {
             constructor() {
                 this.x = Math.random() * hWidth;
                 this.y = Math.random() * hHeight;
-                this.size = Math.random() * 2 + 1; // Particle size
-                this.speedX = Math.random() * 1.5 - 0.75; // Movement speed
-                this.speedY = Math.random() * 1.5 - 0.75;
-                // Red glowing color
-                this.color = 'rgba(255, 0, 60, 0.8)';
+                this.size = Math.random() * 1.5 + 0.5;
+                this.speedX = (Math.random() * 0.4 - 0.2);
+                this.speedY = (Math.random() * 0.4 - 0.2);
+                this.color = 'rgba(255, 0, 60, 0.7)';
             }
-
             update() {
                 this.x += this.speedX;
                 this.y += this.speedY;
-
-                // Bounce off edges
                 if (this.x > hWidth || this.x < 0) this.speedX *= -1;
                 if (this.y > hHeight || this.y < 0) this.speedY *= -1;
-
-                // Collision with mouse
-                if (hMouse.x != null && hMouse.y != null) {
-                    let dx = hMouse.x - this.x;
-                    let dy = hMouse.y - this.y;
+                if (!isTouchDevice && hMouse.x != null) {
+                    let dx = hMouse.x - this.x, dy = hMouse.y - this.y;
                     let distSq = dx * dx + dy * dy;
-                    let mRadiusSq = hMouse.radius * hMouse.radius;
-                    if (distSq < mRadiusSq) {
-                        let distance = Math.sqrt(distSq);
-                        if (distance === 0) distance = 0.1;
-                        const forceDirectionX = dx / distance;
-                        const forceDirectionY = dy / distance;
-                        const force = (hMouse.radius - distance) / hMouse.radius;
-                        const directionX = forceDirectionX * force * 1.5;
-                        const directionY = forceDirectionY * force * 1.5;
-
-                        this.x -= directionX; // repulse
-                        this.y -= directionY;
+                    let mRadSq = hMouse.radius * hMouse.radius;
+                    if (distSq < mRadSq) {
+                        let dist = Math.sqrt(distSq) || 0.1;
+                        let force = (hMouse.radius - dist) / hMouse.radius;
+                        this.x -= (dx / dist) * force * 1.5;
+                        this.y -= (dy / dist) * force * 1.5;
                     }
                 }
             }
-
             draw() {
                 hCtx.beginPath();
                 hCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 hCtx.fillStyle = this.color;
-                hCtx.shadowBlur = 10;
-                hCtx.shadowColor = '#ff0000';
+                // shadowBlur mobile pe off — GPU killer
+                if (!isTouchDevice) {
+                    hCtx.shadowBlur = 6;
+                    hCtx.shadowColor = '#ff003c';
+                }
                 hCtx.fill();
+                hCtx.shadowBlur = 0;
             }
         }
 
         function initHeroParticles() {
             heroParticles = [];
-            let numberOfParticles = (hWidth * hHeight) / 9000; // density
-            if (numberOfParticles > 100) numberOfParticles = 100; // Hard cap to prevent lag on big screens
-
-            for (let i = 0; i < numberOfParticles; i++) {
-                heroParticles.push(new HeroParticle());
-            }
+            // Mobile pe sirf 40, desktop pe 80
+            let count = isTouchDevice
+                ? Math.min(40, Math.floor((hWidth * hHeight) / 15000))
+                : Math.min(80, Math.floor((hWidth * hHeight) / 9000));
+            for (let i = 0; i < count; i++) heroParticles.push(new HeroParticle());
         }
 
         function connectHeroParticles() {
-            let maxDistance = 120; // connection distance between particles
-            let maxDistSq = maxDistance * maxDistance;
-
+            // Mobile pe connection distance kam
+            let maxDist = isTouchDevice ? 80 : 120;
+            let maxDistSq = maxDist * maxDist;
             for (let a = 0; a < heroParticles.length; a++) {
-                for (let b = a + 1; b < heroParticles.length; b++) { // Optimized: b = a + 1 to avoid duplicate checks
+                for (let b = a + 1; b < heroParticles.length; b++) {
                     let dx = heroParticles[a].x - heroParticles[b].x;
                     let dy = heroParticles[a].y - heroParticles[b].y;
                     let distSq = dx * dx + dy * dy;
-
                     if (distSq < maxDistSq) {
-                        let distance = Math.sqrt(distSq);
-                        let opacityValue = 1 - (distance / maxDistance);
-                        if (opacityValue > 0.05) { // Skip drawing nearly invisible lines
-                            hCtx.strokeStyle = `rgba(255, 0, 60, ${opacityValue * 0.5})`;
-                            hCtx.lineWidth = 1;
+                        let opacity = (1 - Math.sqrt(distSq) / maxDist) * 0.4;
+                        if (opacity > 0.05) {
+                            hCtx.strokeStyle = `rgba(255,0,60,${opacity})`;
+                            hCtx.lineWidth = 0.8;
                             hCtx.beginPath();
                             hCtx.moveTo(heroParticles[a].x, heroParticles[a].y);
                             hCtx.lineTo(heroParticles[b].x, heroParticles[b].y);
@@ -220,20 +196,16 @@ $(document).ready(function () {
                         }
                     }
                 }
-
-                // Connect to mouse as well
-                if (hMouse.x != null && hMouse.y != null) {
+                // Mouse connection sirf desktop pe
+                if (!isTouchDevice && hMouse.x != null) {
                     let dx = heroParticles[a].x - hMouse.x;
                     let dy = heroParticles[a].y - hMouse.y;
                     let distSq = dx * dx + dy * dy;
-                    let mRadiusSq = hMouse.radius * hMouse.radius;
-
-                    if (distSq < mRadiusSq) {
-                        let distance = Math.sqrt(distSq);
-                        let opacityValue = 1 - (distance / hMouse.radius);
-                        if (opacityValue > 0.05) { // Skip drawing nearly invisible lines
-                            hCtx.strokeStyle = `rgba(255, 0, 60, ${opacityValue * 0.8})`;
-                            hCtx.lineWidth = 1.5;
+                    if (distSq < hMouse.radius * hMouse.radius) {
+                        let opacity = (1 - Math.sqrt(distSq) / hMouse.radius) * 0.7;
+                        if (opacity > 0.05) {
+                            hCtx.strokeStyle = `rgba(255,0,60,${opacity})`;
+                            hCtx.lineWidth = 1;
                             hCtx.beginPath();
                             hCtx.moveTo(heroParticles[a].x, heroParticles[a].y);
                             hCtx.lineTo(hMouse.x, hMouse.y);
@@ -246,7 +218,6 @@ $(document).ready(function () {
 
         function animateHeroParticles() {
             hCtx.clearRect(0, 0, hWidth, hHeight);
-
             for (let i = 0; i < heroParticles.length; i++) {
                 heroParticles[i].update();
                 heroParticles[i].draw();
@@ -332,10 +303,11 @@ $(document).ready(function () {
 
     // Initialize AOS Animation Library
     AOS.init({
-        offset: 150,
-        duration: 1000,
-        once: false,
-        mirror: true
+        offset: 80,
+        duration: isTouchDevice ? 600 : 900,
+        once: true,      // Mobile pe ek baar animate karo, dobara nahi
+        mirror: false,   // Mirror off — scroll up pe re-animate nahi
+        disable: false
     });
 
     // 3D TagCloud Sphere Animation for Generative AI Skills
@@ -368,8 +340,8 @@ $(document).ready(function () {
     };
 
     let sphereRadius = 220;
-    if (window.innerWidth < 768) sphereRadius = 160;
-    if (window.innerWidth < 450) sphereRadius = 120;
+    if (window.innerWidth < 768) sphereRadius = 140;
+    if (window.innerWidth < 450) sphereRadius = 110;
 
     // ==========================================
     // Unified Drag-to-Rotate 3D System
@@ -418,8 +390,9 @@ $(document).ready(function () {
             const wireframeRadius = sphereRadius - 5;
 
             // 1. Build Wireframe Lat/Lon Sphere Coordinates
-            const lats = 12; // Zyada horizontal rings
-            const lons = 24; // Zyada vertical lines (more wires)
+            // Mobile pe kam wireframe lines = kam GPU load
+            const lats = isTouchDevice ? 8 : 12;
+            const lons = isTouchDevice ? 16 : 24;
 
             for (let i = 0; i <= lats; i++) {
                 const lat = Math.PI * (i / lats) - Math.PI / 2;
@@ -619,15 +592,14 @@ $(document).ready(function () {
                 let itemAlpha = (sphereRadius - zDepth) / (sphereRadius * 2);
                 itemAlpha = Math.max(0.15, Math.min(1, itemAlpha));
 
-                // Depth of Field (blur further away items)
-                let blur = Math.max(0, (zDepth / sphereRadius) * 4);
+                // Mobile pe blur off (GPU killer)
+                let blur = isTouchDevice ? 0 : Math.max(0, (zDepth / sphereRadius) * 3);
 
-                // Enhance scale difference mathematically so front items pop correctly
                 let dynamicScale = scale * 1.1;
 
                 item.el.style.transform = `translate(-50%, -50%) translate3d(${px - cx}px, ${py - cy}px, 0) scale(${dynamicScale})`;
                 item.el.style.opacity = itemAlpha;
-                item.el.style.filter = `blur(${blur}px)`;
+                item.el.style.filter = blur > 0.2 ? `blur(${blur}px)` : '';
                 item.el.style.zIndex = Math.floor((sphereRadius - zDepth) * 10);
             });
 
@@ -752,29 +724,17 @@ $(document).ready(function () {
     // ============================================
     // Holographic Datapad 3D Tilt Effect
     // ============================================
+    // 3D Tilt — sirf desktop pe, mobile pe disabled
     const datapad = document.getElementById('about-datapad');
-    if (datapad) {
+    if (datapad && !isTouchDevice) {
         document.addEventListener('mousemove', (e) => {
-            const rect = datapad.getBoundingClientRect();
-            
-            // We want it to tilt based on mouse position relative to the screen center
-            // but only tilt significantly if the mouse is near it, or just always track the mouse gently.
-            // Let's do a gentle global tracking so it feels like a physical object in the room.
             const centerX = window.innerWidth / 2;
             const centerY = window.innerHeight / 2;
-            
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-
-            // Calculate rotation. Max rotation is 15 degrees.
-            const maxRotation = 15;
-            const rotateY = ((mouseX - centerX) / centerX) * maxRotation;
-            const rotateX = -((mouseY - centerY) / centerY) * maxRotation; // Negative to tilt towards mouse
-
+            const maxRotation = 12;
+            const rotateY = ((e.clientX - centerX) / centerX) * maxRotation;
+            const rotateX = -((e.clientY - centerY) / centerY) * maxRotation;
             datapad.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
         });
-
-        // Reset when mouse leaves the window
         document.addEventListener('mouseleave', () => {
             datapad.style.transform = `rotateX(0deg) rotateY(0deg)`;
         });

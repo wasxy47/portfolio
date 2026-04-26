@@ -7,10 +7,19 @@
     text-decoration: none;
     border: none;
     outline: none;
-    scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
     cursor: none;
     /* Hide default cursor for custom cursor */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Mobile pe default cursor restore karo */
+@media (hover: none) and (pointer: coarse) {
+    * { cursor: auto; }
+    #fire-canvas { display: none !important; }
 }
 
 :root {
@@ -27,6 +36,8 @@
 html {
     font-size: 62.5%;
     overflow-x: hidden;
+    /* GPU-accelerated scroll */
+    -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -61,7 +72,7 @@ body {
     border-radius: 5px;
 }
 
-/* Custom Fire Cursor Canvas */
+/* Custom Fire Cursor Canvas — Desktop Only */
 #fire-canvas {
     position: fixed;
     top: 0;
@@ -69,8 +80,8 @@ body {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    /* Mouse clicks passes through it */
     z-index: 9999;
+    will-change: contents;
 }
 
 /* Cinematic Preloader */
@@ -372,7 +383,7 @@ section {
     height: 100vh;
     z-index: -1;
     pointer-events: none;
-    /* Let clicks pass through to links */
+    will-change: contents;
 }
 
 .hero-title {
@@ -507,6 +518,7 @@ span.typing {
     justify-content: center;
     align-items: center;
     animation: floatImage 4s ease-in-out infinite;
+    will-change: transform;
 }
 
 .placeholder-img {
@@ -546,13 +558,15 @@ span.typing {
 .holographic-datapad {
     position: relative;
     background: rgba(10, 10, 15, 0.7);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 0, 0, 0.3);
     border-radius: 4px;
     padding: 4rem;
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.1), inset 0 0 20px rgba(0, 0, 0, 0.8);
     transform-style: preserve-3d;
-    transition: transform 0.1s ease-out; /* For JS tilt effect */
+    transition: transform 0.15s ease-out;
+    will-change: transform;
 }
 
 /* Corner Brackets for HUD feel */
@@ -786,20 +800,22 @@ span.typing {
 /* Float animation for the cards */
 .history-item:nth-child(odd) .history-datapad {
     animation: floatCardLeft 6s ease-in-out infinite;
+    will-change: transform;
 }
 
 .history-item:nth-child(even) .history-datapad {
     animation: floatCardRight 6s ease-in-out infinite;
+    will-change: transform;
 }
 
 @keyframes floatCardLeft {
-    0%, 100% { transform: translateY(0px) rotateY(5deg); }
-    50% { transform: translateY(-10px) rotateY(10deg); }
+    0%, 100% { transform: translateY(0px) rotateY(3deg); }
+    50% { transform: translateY(-8px) rotateY(6deg); }
 }
 
 @keyframes floatCardRight {
-    0%, 100% { transform: translateY(0px) rotateY(-5deg); }
-    50% { transform: translateY(-10px) rotateY(-10deg); }
+    0%, 100% { transform: translateY(0px) rotateY(-3deg); }
+    50% { transform: translateY(-8px) rotateY(-6deg); }
 }
 
 /* Hover 3D interactive effect */
@@ -1163,11 +1179,12 @@ span.typing {
 .portfolio-card-container {
     perspective: 1000px;
     width: 260px;
-    aspect-ratio: 1 / 1.42; /* Standard poker card ratio */
+    aspect-ratio: 1 / 1.42;
     position: absolute;
     bottom: 0;
     transform-origin: bottom center;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform;
 }
 
 /* Fan out the cards */
@@ -1904,8 +1921,9 @@ span.typing {
         transform: none;
         width: 100%;
         padding: 1rem 3%;
-        background: rgba(10, 10, 15, 0.95);
-        backdrop-filter: blur(15px);
+        background: rgba(10, 10, 15, 0.97);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
         border-top: 1px solid rgba(255, 0, 0, 0.3);
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .5);
         display: none;
@@ -1923,15 +1941,15 @@ span.typing {
         font-size: 2rem;
         margin: 1.5rem 0;
         margin-left: 0;
-        transform: none; /* Reset desktop vertical menu transform */
-        width: 100%;     /* Make full width for mobile menu */
+        transform: none;
+        width: 100%;
         text-align: left;
-        border-radius: 8px; /* Classic mobile shapes */
+        border-radius: 8px;
     }
 
     .navbar a:hover,
     .navbar a.active {
-        transform: translateY(-2px); /* Only slight up popup, no left sliding */
+        transform: translateY(-2px);
     }
 
     .home {
@@ -1969,6 +1987,61 @@ span.typing {
         font-size: 4vw;
         letter-spacing: 5px;
     }
+
+    /* Mobile pe heavy blur effects band — GPU relief */
+    .holographic-datapad,
+    .history-datapad,
+    .skill-item,
+    .uplink-status,
+    .uplink-form-container {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    /* Mobile pe float/3D card animations band — scroll smooth ho */
+    .history-item:nth-child(odd) .history-datapad,
+    .history-item:nth-child(even) .history-datapad {
+        animation: none;
+        transform: none;
+    }
+
+    /* Portfolio cards simpler on mobile */
+    .portfolio-container {
+        height: 400px;
+    }
+    .portfolio-card-container {
+        width: 200px;
+    }
+    .portfolio-card-container:nth-child(1) { transform: rotate(-30deg) translateX(-140px); }
+    .portfolio-card-container:nth-child(2) { transform: rotate(-20deg) translateX(-100px); }
+    .portfolio-card-container:nth-child(3) { transform: rotate(-12deg) translateX(-60px); }
+    .portfolio-card-container:nth-child(4) { transform: rotate(-4deg) translateX(-20px); }
+    .portfolio-card-container:nth-child(5) { transform: rotate(4deg) translateX(20px); }
+    .portfolio-card-container:nth-child(6) { transform: rotate(12deg) translateX(60px); }
+    .portfolio-card-container:nth-child(7) { transform: rotate(20deg) translateX(100px); }
+    .portfolio-card-container:nth-child(8) { transform: rotate(30deg) translateX(140px); }
+
+    /* Skills globe mobile fix */
+    .skills-globe-container {
+        height: 420px;
+    }
+
+    /* Skills globe text labels chotay mobile pe */
+    .skill-globe-text {
+        font-size: 11px;
+        padding: 2px 5px;
+    }
+    .skill-globe-icon {
+        width: 26px;
+        height: 26px;
+    }
+
+    /* Touch-friendly tap targets */
+    .navbar a {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+    }
 }
 
 @media (max-width: 450px) {
@@ -1991,6 +2064,21 @@ span.typing {
     .intro-role {
         font-size: 4.5vw;
         letter-spacing: 3px;
+    }
+
+    .skills-globe-container {
+        height: 360px;
+    }
+
+    /* Preloader text smaller on tiny screens */
+    .fl-letter, .fl-ref-letter {
+        font-size: 13vw;
+    }
+    .falling-main {
+        height: 15vw;
+    }
+    .falling-reflection {
+        height: 7vw;
     }
 }
 
