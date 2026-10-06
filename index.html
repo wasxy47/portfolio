@@ -1,590 +1,1201 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Wasay</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons (Updated for X Logo) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Favicon -->
-    <link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdul Wasay | Generative AI Engineer</title>
+  <meta name="description" content="Portfolio of Abdul Wasay, Generative AI Engineer specializing in LLMs, Multi-Agent Orchestration, Enterprise RAG, and AI Safety.">
+  <meta name="keywords" content="Abdul Wasay, Generative AI, AI Engineer, LLMs, Agentic AI, RAG, LangChain, FastAPI, Python">
+  <meta name="author" content="Abdul Wasay">
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Abdul Wasay | Generative AI Engineer">
+  <meta property="og:description" content="Architecting production-grade LLM systems, Agentic AI, and Adversarial Defense.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wasxy47.github.io/portfolio/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=20261002_3">
+</head>
 <body>
 
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress"></div>
+  <!-- Real Fire & Ember Particle Cursor Canvas -->
+  <canvas id="fire-cursor-canvas"></canvas>
 
-    <!-- Background Global Neural Network Canvas -->
-    <canvas id="bg-canvas"></canvas>
+  <!-- Interactive Custom Cursor Elements -->
+  <div class="custom-cursor" id="cursor"></div>
+  <div class="custom-cursor-follower" id="cursor-follower"></div>
 
-    <!-- Fire Canvas for Cursor -->
-    <canvas id="fire-canvas"></canvas>
+  <!-- ========================================================================
+       TOP NAVIGATION BAR
+       ======================================================================== -->
+  <header class="site-nav" id="site-nav">
+    <a href="#hero" class="brand-logo" aria-label="Abdul Wasay Home">
+      <div class="logo-symbol" title="Abdul Wasay">
+        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 25L13.5 7L20 25" stroke="#f4f4f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M10 18H17" stroke="#e29d52" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M17 18L21 25L25 7" stroke="#a1a1aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </a>
 
-    <!-- Cinematic Preloader -->
-    <div id="preloader">
-        <div class="intro-container">
-            <div class="falling-letters-wrapper">
-                <div class="falling-main" id="falling-main"></div>
-                <div class="falling-reflection" id="falling-reflection"></div>
-            </div>
-            <div class="intro-role-reveal">
-                <h3 class="intro-role">GENERATIVE AI ENGINEER</h3>
-            </div>
+    <div class="nav-right">
+      <div class="status-dot-indicator" title="Available for work"></div>
+      <button class="menu-trigger" id="menu-open-btn" aria-label="Open Navigation Menu">
+        <span>Menu</span>
+        <div class="menu-icon">
+          <span></span>
+          <span></span>
         </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       FULLSCREEN GLASS OVERLAY MENU
+       ======================================================================== -->
+  <div class="menu-overlay" id="menu-overlay">
+    <div class="menu-overlay-header">
+      <div class="brand-logo">
+        <div class="logo-symbol">
+          <svg width="22" height="22" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 25L13.5 7L20 25" stroke="#f4f4f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10 18H17" stroke="#e29d52" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M17 18L21 25L25 7" stroke="#a1a1aa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+      <button class="menu-close-btn" id="menu-close-btn" aria-label="Close Menu">
+        <span>✕</span>
+        <span>Close</span>
+      </button>
     </div>
 
-    <!-- Header / Navbar -->
-    <header class="header">
-        <a href="#home" class="logo" style="display: flex; align-items: center; gap: 1rem;">
-            <img src="favicon.svg?v=3" alt="AW Logo" style="width: 45px; height: 45px; border-radius: 8px;">
-            <div>
-                <span class="logo-text">PORT</span><span class="logo-highlight">FOLIO.</span>
-            </div>
-        </a>
-        <div class="menu-btn">
-            <i class="fas fa-bars"></i>
-        </div>
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <nav class="menu-overlay-links">
+      <a href="#hero" class="menu-link"><span class="nav-num">01</span> Home</a>
+      <a href="#services" class="menu-link"><span class="nav-num">02</span> What I Do</a>
+      <a href="#works" class="menu-link"><span class="nav-num">03</span> Selected Works</a>
+      <a href="#about" class="menu-link"><span class="nav-num">04</span> About &amp; Skills</a>
+      <a href="#experience" class="menu-link"><span class="nav-num">05</span> Experience</a>
+      <a href="#contact" class="menu-link"><span class="nav-num">06</span> Let's Talk</a>
+    </nav>
 
-    <!-- Home Section -->
-    <section class="home" id="home">
-        <div class="home-content" data-aos="fade-right" data-aos-duration="1500">
-            <h1 class="hero-title">
-                <span class="hero-name">ABDUL WASAY</span>
-                <span class="hero-role">GENERATIVE AI ENGINEER</span>
+    <div class="menu-overlay-footer">
+      <div class="menu-overlay-socials">
+        <a href="https://github.com/wasxy47" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://linkedin.com/in/abdul-wasay-sheikh-xox" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="mailto:wasxy47@gmail.com">Email ↗</a>
+      </div>
+      <div class="footer-copy">
+        Karachi, Pakistan &bull; Available Worldwide
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ======================================================================
+         HERO SECTION (CINEMATIC FULLSCREEN GARGANTUA BLACK HOLE)
+         Customized with ABDUL WASAY & GENERATIVE AI ENGINEER
+         ====================================================================== -->
+    <section class="hero-section" id="hero">
+      <!-- Fullscreen Looping Gargantua Black Hole Video (Pinterest Pin 41799102785928864) -->
+      <video class="hero-video-bg" autoplay muted loop playsinline preload="auto">
+        <source src="assets/videos/gargantua_1080p.mp4" type="video/mp4">
+        <source src="assets/videos/gargantua.webm" type="video/webm">
+        Your browser does not support HTML5 video.
+      </video>
+
+      <!-- Accretion Disk Dynamic Light Pulse Glow -->
+      <div class="hero-accretion-glow"></div>
+
+      <!-- Contrast & Vignette Layer -->
+      <div class="hero-vignette-overlay"></div>
+
+      <!-- Hero Content Foreground -->
+      <div class="container hero-content">
+        <div class="hero-bottom-grid">
+          <!-- Big Bold Display Typography & Subtext -->
+          <div class="hero-title-wrap">
+            <h1 class="hero-main-title">
+              <span>ABDUL</span>
+              <span>WASAY.</span>
             </h1>
-            <p>Building intelligent AI agents, advanced RAG pipelines, and scalable LLM applications. Turning complex machine learning concepts into high-performance, real-world solutions.</p>
-            <div class="hero-btns" style="margin-top: 2.5rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                <a href="#contact" class="btn">Hire Me</a>
-                <a href="#" class="btn" download><i class="fas fa-download"></i> Download CV</a>
+
+            <div class="hero-subtext-block">
+              <div class="hero-subtext-line"></div>
+              <div class="hero-tagline">
+                <p class="hero-role-title">Generative AI Engineer</p>
+                <span class="hero-identity">LLMs &bull; Autonomous Agents &bull; Enterprise RAG</span>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="holographic-datapad-container" data-aos="zoom-in" data-aos-duration="1500">
-            <div class="holographic-datapad" id="about-datapad">
-                <!-- Decorative Corner Brackets -->
-                <div class="bracket top-left"></div>
-                <div class="bracket top-right"></div>
-                <div class="bracket bottom-left"></div>
-                <div class="bracket bottom-right"></div>
-
-                <div class="datapad-header">
-                    <h2 class="heading">About <span>Me</span></h2>
-                    <div class="status-indicator">
-                        <span class="blinking-dot"></span> STATUS: ONLINE
-                    </div>
-                </div>
-
-                <div class="datapad-body">
-                    <div class="system-log">
-                        <span class="log-prefix">> SYSTEM_LOG: ROLE</span>
-                        <p>Software Engineering student with a strong focus on Generative AI, RAG (Retrieval-Augmented Generation), and LLMs. I don’t just learn theory—I build real projects.</p>
-                    </div>
-
-                    <div class="system-log">
-                        <span class="log-prefix">> SYSTEM_LOG: CORE_FOCUS</span>
-                        <ul>
-                            <li>Building RAG-based applications combining LLMs with external data.</li>
-                            <li>Experimenting with LLM fine-tuning & prompt engineering.</li>
-                            <li>Exploring Agentic AI workflows with tool-calling capabilities.</li>
-                        </ul>
-                    </div>
-
-                    <div class="system-log">
-                        <span class="log-prefix">> SYSTEM_LOG: FOUNDATION</span>
-                        <p>Actively strengthening foundation in Machine Learning and Deep Learning—from classic ML algorithms to neural networks to design robust, practical solutions.</p>
-                    </div>
-
-                    <div class="system-log">
-                        <span class="log-prefix">> SYSTEM_LOG: MISSION</span>
-                        <p>I share my work on GitHub and treat every project as proof of work. For me, it’s about building efficient systems, clean Python code, and AI projects that solve real problems. <span class="terminal-cursor">_</span></p>
-                    </div>
-
-                    <!-- GitHub Stats Matrix -->
-                    <div class="system-log git-matrix" style="margin-top: 2rem; border-top: 1px dashed rgba(255, 0, 0, 0.3); padding-top: 1.5rem;">
-                        <span class="log-prefix">> SYSTEM_LOG: GITHUB_ACTIVITY</span>
-                        <div class="github-stats-container" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
-                            <!-- Activity Graph -->
-                            <img src="https://github-readme-activity-graph.vercel.app/graph?username=wasxy47&bg_color=0f0f0f&color=ff0000&line=ff0000&point=ffffff&area=true&hide_border=true" alt="Wasay's GitHub Activity Graph" style="max-width: 100%; border: 1px solid rgba(255, 0, 0, 0.2); border-radius: 8px; box-shadow: 0 0 15px rgba(255, 0, 0, 0.1);">
-                            <!-- Contribution Grid -->
-                            <div style="width: 100%; overflow: hidden; border: 1px solid rgba(255, 0, 0, 0.2); border-radius: 8px; box-shadow: 0 0 15px rgba(249, 2, 2, 0.1); padding: 1rem; background: #0f0f0f; display: flex; justify-content: center; align-items: center;">
-                                <img src="https://ghchart.rshah.org/ff0000/wasxy47" alt="Wasay's GitHub Contribution Grid" style="max-width: 100%; filter: invert(0.87) hue-rotate(180deg) saturate(3.5) brightness(0.9) contrast(1.2);">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience & Education Section -->
-    <section class="experience" id="experience" style="padding-bottom: 2rem;">
-        <h2 class="heading" data-aos="fade-down">System <span>History</span></h2>
-        
-        <div class="history-timeline">
-            <!-- Timeline Item 1 -->
-            <div class="history-item" data-aos="fade-right" data-aos-duration="1500" data-aos-offset="100">
-                <div class="history-dot"></div>
-                <div class="holographic-datapad history-datapad">
-                    <div class="bracket top-left"></div><div class="bracket top-right"></div>
-                    <div class="bracket bottom-left"></div><div class="bracket bottom-right"></div>
-                    
-                    <div class="datapad-header" style="border-bottom: 1px dashed rgba(255, 0, 0, 0.4); padding-bottom: 1rem;">
-                        <h3><i class="fas fa-network-wired" style="color: var(--main-color); margin-right: 8px;"></i> Neuro-AGI</h3>
-                        <span class="history-date">Dec 2025 - Present</span>
-                    </div>
-                    <div class="datapad-body" style="padding-top: 1rem;">
-                        <span class="log-prefix">> ROLE: Internship (Machine Learning & GenAI)</span>
-                        <p style="margin-top: 5px;">Actively learning and working on deep Machine Learning concepts and Generative AI architectures. Executing hands-on AI models and neural workflows.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Timeline Item 2 -->
-            <div class="history-item" data-aos="fade-left" data-aos-duration="1500" data-aos-offset="100">
-                <div class="history-dot"></div>
-                <div class="holographic-datapad history-datapad">
-                    <div class="bracket top-left"></div><div class="bracket top-right"></div>
-                    <div class="bracket bottom-left"></div><div class="bracket bottom-right"></div>
-                    
-                    <div class="datapad-header" style="border-bottom: 1px dashed rgba(255, 0, 0, 0.4); padding-bottom: 1rem;">
-                        <h3><i class="fas fa-university" style="color: var(--main-color); margin-right: 8px;"></i> Iqra University</h3>
-                        <span class="history-date">2023 - 2027</span>
-                    </div>
-                    <div class="datapad-body" style="padding-top: 1rem;">
-                        <span class="log-prefix">> EDUCATION: BS Software Engineering</span>
-                        <p style="margin-top: 5px;">Core focus on robust software development principles, data structures, algorithm design, scaling complex systems, and integrating AI.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills" id="skills">
-        <h2 class="heading" data-aos="fade-down">My <span>Skills</span></h2>
-        <div class="skills-content">
-            <!-- Left Side: Skills List -->
-            <div class="skills-list" data-aos="fade-right" data-aos-duration="1500">
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">Python / PyTorch</span>
-                        <span class="skill-percent">90%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">LLMs / LangChain / RAG</span>
-                        <span class="skill-percent">80%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">Machine Learning Algorithms</span>
-                        <span class="skill-percent">80%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">Prompt Engineering / Fine-Tuning</span>
-                        <span class="skill-percent">80%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">Vector DBs / Semantic Search</span>
-                        <span class="skill-percent">75%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">Agentic Workflows / APIs</span>
-                        <span class="skill-percent">70%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">React / Frontend / UI</span>
-                        <span class="skill-percent">40%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 40%;"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-info">
-                        <span class="skill-name">Docker / Deployment</span>
-                        <span class="skill-percent">60%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress" style="width: 60%;"></div></div>
-                </div>
-            </div>
-
-            <!-- Right Side: 3D Globe -->
-            <div class="skills-globe-container" data-aos="zoom-in" data-aos-duration="1500">
-                <!-- 3D Wireframe Canvas -->
-                <canvas id="globe-canvas"></canvas>
-                <!-- 3D TagCloud goes here -->
-                <div class="tagcloud"></div>
-            </div>
-        </div>
-
-        <!-- Scrolling Logos Marquee -->
-        <div class="skills-marquee">
-            <div class="marquee-track">
-                <!-- Logos injected via JS -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <h2 class="heading" data-aos="fade-down">Latest <span>Projects</span></h2>
-        
-        <div class="projects-wrapper">
-            <!-- Left Side: Interactive Quick Links List -->
-            <div class="projects-list" data-aos="fade-right" data-aos-duration="1500">
-                <a href="https://github.com/wasxy47/ADK_Negotiating_Agent" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-handshake"></i></div>
-                    <div class="info">
-                        <h3>ADK Negotiating</h3>
-                        <p>Intelligent AI agent designed for automated negotiations.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/wasxy47/docker-flask-redis-boilerplate" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-server"></i></div>
-                    <div class="info">
-                        <h3>Docker Stack</h3>
-                        <p>A robust boilerplate utilizing Docker, Flask, and Redis.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/wasxy47/RAG_Comparison_System" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-balance-scale"></i></div>
-                    <div class="info">
-                        <h3>RAG System</h3>
-                        <p>A comprehensive system comparing Retrieval-Augmented Gen models.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/wasxy47/ai-news-researcher" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-newspaper"></i></div>
-                    <div class="info">
-                        <h3>AI News Agent</h3>
-                        <p>Automated research tool for gathering and summarizing AI news.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/wasxy47/Smart_Career_Advisor" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-user-graduate"></i></div>
-                    <div class="info">
-                        <h3>Career Advisor</h3>
-                        <p>A smart advisor leveraging AI for career path recommendations.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/wasxy47/Medical_LLM_FineTuning_Colab" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-notes-medical"></i></div>
-                    <div class="info">
-                        <h3>Medical LLM</h3>
-                        <p>Fine-tuning Large Language Models for medical domain knowledge.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/wasxy47/local_llm_chat" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-comments"></i></div>
-                    <div class="info">
-                        <h3>Local LLM Chat</h3>
-                        <p>A secure, local chat interface for interacting with LLMs.</p>
-                    </div>
-                </a>
-                <a href="https://github.com/wasxy47/presidio-demo" target="_blank" class="project-list-item">
-                    <div class="icon"><i class="fas fa-user-secret"></i></div>
-                    <div class="info">
-                        <h3>Presidio Demo</h3>
-                        <p>A demonstration of data anonymization and PII removal.</p>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Right Side: The Fanned Deck -->
-            <div class="portfolio-container" data-aos="fade-left" data-aos-duration="1500">
-            
-            <!-- Card 1 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-handshake"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left"><span>A</span><span>&spades;</span></div>
-                        <div class="card-content">
-                            <h4>ADK Negotiating</h4>
-                            <p>Intelligent AI agent designed for automated negotiations.</p>
-                            <a href="https://github.com/wasxy47/ADK_Negotiating_Agent" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right"><span>A</span><span>&spades;</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-server"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left red-suit"><span>K</span><span>&hearts;</span></div>
-                        <div class="card-content">
-                            <h4>Docker Stack</h4>
-                            <p>A robust boilerplate utilizing Docker, Flask, and Redis.</p>
-                            <a href="https://github.com/wasxy47/docker-flask-redis-boilerplate" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right red-suit"><span>K</span><span>&hearts;</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-balance-scale"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left"><span>Q</span><span>&clubs;</span></div>
-                        <div class="card-content">
-                            <h4>RAG System</h4>
-                            <p>A comprehensive system comparing Retrieval-Augmented Gen models.</p>
-                            <a href="https://github.com/wasxy47/RAG_Comparison_System" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right"><span>Q</span><span>&clubs;</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-newspaper"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left red-suit"><span>J</span><span>&diams;</span></div>
-                        <div class="card-content">
-                            <h4>AI News Agent</h4>
-                            <p>Automated research tool for gathering and summarizing AI news.</p>
-                            <a href="https://github.com/wasxy47/ai-news-researcher" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right red-suit"><span>J</span><span>&diams;</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 5 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-user-graduate"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left"><span>10</span><span>&spades;</span></div>
-                        <div class="card-content">
-                            <h4>Career Advisor</h4>
-                            <p>A smart advisor leveraging AI for career path recommendations.</p>
-                            <a href="https://github.com/wasxy47/Smart_Career_Advisor" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right"><span>10</span><span>&spades;</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 6 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-notes-medical"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left red-suit"><span>9</span><span>&hearts;</span></div>
-                        <div class="card-content">
-                            <h4>Medical LLM</h4>
-                            <p>Fine-tuning Large Language Models for medical domain knowledge.</p>
-                            <a href="https://github.com/wasxy47/Medical_LLM_FineTuning_Colab" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right red-suit"><span>9</span><span>&hearts;</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 7 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-comments"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left"><span>8</span><span>&clubs;</span></div>
-                        <div class="card-content">
-                            <h4>Local LLM Chat</h4>
-                            <p>A secure, local chat interface for interacting with LLMs.</p>
-                            <a href="https://github.com/wasxy47/local_llm_chat" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right"><span>8</span><span>&clubs;</span></div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 8 -->
-            <div class="portfolio-card-container">
-                <div class="portfolio-card">
-                    <div class="card-face card-front">
-                        <div class="card-border"></div>
-                        <div class="card-emblem"><i class="fas fa-user-secret"></i></div>
-                    </div>
-                    <div class="card-face card-back">
-                        <div class="card-rank top-left red-suit"><span>7</span><span>&diams;</span></div>
-                        <div class="card-content">
-                            <h4>Presidio Demo</h4>
-                            <p>A demonstration of data anonymization and PII removal.</p>
-                            <a href="https://github.com/wasxy47/presidio-demo" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <div class="card-rank bottom-right red-suit"><span>7</span><span>&diams;</span></div>
-                    </div>
-                </div>
-            </div>
-
-        </div> <!-- End of .portfolio-container -->
-        </div> <!-- End of .projects-wrapper -->
-    </section>
-
-    <!-- Contact Section: Secure Uplink Terminal -->
-    <section class="contact" id="contact">
-        <h2 class="heading" data-aos="fade-down">Secure <span>Uplink</span></h2>
-        
-        <div class="uplink-container">
-            <!-- Left Panel: Radar & Status -->
-            <div class="uplink-status" data-aos="fade-right" data-aos-duration="1500">
-                <div class="radar-container">
-                    <div class="radar"></div>
-                    <div class="radar-sweep"></div>
-                    <div class="radar-blip"></div>
-                </div>
-                <div class="status-info">
-                    <h3 class="glitch-text" data-text="SYSTEM ONLINE">SYSTEM ONLINE</h3>
-                    <p class="terminal-line">> AWAITING_CONNECTION...</p>
-                    <p class="terminal-line">> TARGET: ABDUL WASAY</p>
-                    <p class="terminal-line">> LOCATION: <span class="highlight">KARACHI, PAKISTAN</span></p>
-                    <p class="terminal-line">> EMAIL: <span class="highlight">abdulwasay2019kk@gmail.com</span></p>
-                </div>
-            </div>
-
-            <!-- Right Panel: Encrypted Form -->
-            <div class="uplink-form-container" data-aos="fade-left" data-aos-duration="1500">
-                <div class="laser-scanner"></div>
-                <form action="https://formspree.io/f/mojybekq" method="POST" id="secure-form" class="secure-form">
-                    <div class="terminal-header">
-                        <span>// ENCRYPTED_CHANNEL</span>
-                        <div class="status-dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                    </div>
-
-                    <div class="form-grid">
-                        <div class="input-group">
-                            <label for="name" data-original="> ENTER_NAME_">> ENTER_NAME_</label>
-                            <input type="text" id="name" name="name" required autocomplete="off">
-                        </div>
-                        <div class="input-group">
-                            <label for="email" data-original="> ENTER_EMAIL_">> ENTER_EMAIL_</label>
-                            <input type="email" id="email" name="email" required autocomplete="off">
-                        </div>
-                    </div>
-                    
-                    <div class="input-group full-width">
-                        <label for="subject" data-original="> TRANSMISSION_SUBJECT_">> TRANSMISSION_SUBJECT_</label>
-                        <input type="text" id="subject" name="subject" required autocomplete="off">
-                    </div>
-
-                    <div class="input-group full-width">
-                        <label for="message" data-original="> MESSAGE_PAYLOAD_">> MESSAGE_PAYLOAD_</label>
-                        <textarea id="message" name="message" cols="30" rows="5" required autocomplete="off"></textarea>
-                    </div>
-
-                    <button type="submit" class="cyber-btn">
-                        <span class="btn-text">INITIATE TRANSMISSION</span>
-                        <span class="btn-glitch"></span>
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="#home" class="logo">
-                    <span class="logo-text">PORT</span><span class="logo-highlight">FOLIO.</span>
-                </a>
-                <p>Designing the future of intelligent systems.</p>
-            </div>
-            <div class="footer-social">
-                <a href="https://github.com/wasxy47" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/abdul-wasay-sheikh-xox/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://x.com/wasxy_47" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="mailto:abdulwasay2019kk@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
-            <div class="footer-copyright">
-                <p>&copy; 2026 by Abdul Wasay | All Rights Reserved.</p>
-            </div>
-        </div>
-        <div class="footer-iconTop">
-            <a href="#home" class="scroll-top-btn">
-                <i class="fas fa-chevron-up"></i>
+          <!-- Bottom Right Call-to-Action "LET'S TALK ↗" -->
+          <div class="hero-cta-wrap">
+            <a href="#contact" class="hero-lets-talk">
+              <span>LET'S TALK</span>
+              <span class="arrow">&nearr;</span>
             </a>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Typed.js for amazing typing animation -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- AOS Animation Library JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- TagCloud for 3D Sphere -->
-    <script src="https://cdn.jsdelivr.net/npm/TagCloud@2.2.0/dist/TagCloud.min.js"></script>
-    <!-- Custom JS -->
-    <script src="script.js"></script>
+    <!-- ======================================================================
+         INFINITE MARQUEE STRIP
+         ====================================================================== -->
+    <div class="marquee-strip" aria-hidden="true">
+      <div class="marquee-content">
+        <div class="marquee-item"><span class="highlight">LARGE LANGUAGE MODELS</span> <span class="dot"></span></div>
+        <div class="marquee-item">MULTI-AGENT SYSTEMS <span class="dot"></span></div>
+        <div class="marquee-item"><span class="highlight">ENTERPRISE RAG</span> <span class="dot"></span></div>
+        <div class="marquee-item">ADVERSARIAL RED-TEAMING <span class="dot"></span></div>
+        <div class="marquee-item"><span class="highlight">LANGCHAIN &amp; FASTAPI</span> <span class="dot"></span></div>
+        <div class="marquee-item">CEDAR WASM GATEWAYS <span class="dot"></span></div>
+        <div class="marquee-item"><span class="highlight">VECTOR DATABASES</span> <span class="dot"></span></div>
+        <div class="marquee-item">DOCKER &amp; AZURE SCALE <span class="dot"></span></div>
+
+        <!-- Repeated for seamless loop -->
+        <div class="marquee-item"><span class="highlight">LARGE LANGUAGE MODELS</span> <span class="dot"></span></div>
+        <div class="marquee-item">MULTI-AGENT SYSTEMS <span class="dot"></span></div>
+        <div class="marquee-item"><span class="highlight">ENTERPRISE RAG</span> <span class="dot"></span></div>
+        <div class="marquee-item">ADVERSARIAL RED-TEAMING <span class="dot"></span></div>
+        <div class="marquee-item"><span class="highlight">LANGCHAIN &amp; FASTAPI</span> <span class="dot"></span></div>
+        <div class="marquee-item">CEDAR WASM GATEWAYS <span class="dot"></span></div>
+        <div class="marquee-item"><span class="highlight">VECTOR DATABASES</span> <span class="dot"></span></div>
+        <div class="marquee-item">DOCKER &amp; AZURE SCALE <span class="dot"></span></div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         "WHAT I DO /" (STICKY STACKING SERVICES HEADINGS)
+         Faithful replication of Zuned Aalim Stacking Accordion Architecture
+         ====================================================================== -->
+    <section class="section-wrapper services-section" id="services">
+      <div class="container">
+        <!-- Editorial Header -->
+        <div class="services-editorial-header">
+          <h2 class="section-main-heading">WHAT I DO <span class="slash">/</span></h2>
+          <div class="services-header-meta">
+            <span class="services-tag">(Services)</span>
+            <p class="services-lead-text">
+              I architect production-grade Generative AI applications, multi-agent reasoning workflows, and resilient adversarial defense pipelines that scale effortlessly from research to enterprise infrastructure.
+            </p>
+          </div>
+        </div>
+
+        <!-- Sticky Stacking Headings & Content -->
+        <div class="services-stack-container">
+          <!-- Item 01 -->
+          <div class="service-stack-item" data-index="01">
+            <div class="service-item-header">
+              <span class="service-item-num">(01)</span>
+              <h3 class="service-item-title">Generative AI &amp; Multi-Agent Systems</h3>
+            </div>
+            <div class="service-item-content">
+              <p class="service-item-desc">
+                From autonomous task routing to multi-step reasoning pipelines. I engineer intelligent agent systems capable of automated triage, tool calling, chain-of-thought analysis, and complex operational decision-making.
+              </p>
+              <div class="service-item-sublist">
+                <div class="service-sublist-row">
+                  <span class="sublist-num">01</span>
+                  <span class="sublist-title">Multi-Agent Orchestration &amp; LangChain</span>
+                </div>
+                <div class="service-sublist-row">
+                  <span class="sublist-num">02</span>
+                  <span class="sublist-title">Autonomous Tool Calling &amp; Reasoning Loops</span>
+                </div>
+                <div class="service-sublist-row">
+                  <span class="sublist-num">03</span>
+                  <span class="sublist-title">Automated IT Triage &amp; Root-Cause Analysis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 02 -->
+          <div class="service-stack-item" data-index="02">
+            <div class="service-item-header">
+              <span class="service-item-num">(02)</span>
+              <h3 class="service-item-title">Enterprise RAG &amp; Vector Intelligence</h3>
+            </div>
+            <div class="service-item-content">
+              <p class="service-item-desc">
+                Precision retrieval architectures for massive internal enterprise knowledge. Combining hybrid vector search, BM25 dense-sparse matching, and semantic reranking to eliminate hallucinations and accelerate document Q&amp;A.
+              </p>
+              <div class="service-item-sublist">
+                <div class="service-sublist-row">
+                  <span class="sublist-num">01</span>
+                  <span class="sublist-title">Naive, Hybrid &amp; Advanced RAG Pipelines</span>
+                </div>
+                <div class="service-sublist-row">
+                  <span class="sublist-num">02</span>
+                  <span class="sublist-title">ChromaDB, FAISS &amp; High-Throughput Embeddings</span>
+                </div>
+                <div class="service-sublist-row">
+                  <span class="sublist-num">03</span>
+                  <span class="sublist-title">Context Compression &amp; Re-ranking Optimization</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 03 -->
+          <div class="service-stack-item" data-index="03">
+            <div class="service-item-header">
+              <span class="service-item-num">(03)</span>
+              <h3 class="service-item-title">AI Safety, Governance &amp; Cloud Microservices</h3>
+            </div>
+            <div class="service-item-content">
+              <p class="service-item-desc">
+                Hardening enterprise LLM systems against adversarial threats. Implementing inline policy gateways (Cedar WASM), multi-strategy jailbreak neutralizers, and production microservices with Docker on Microsoft Azure.
+              </p>
+              <div class="service-item-sublist">
+                <div class="service-sublist-row">
+                  <span class="sublist-num">01</span>
+                  <span class="sublist-title">MCP Governance Gateways &amp; Cedar WASM Policies</span>
+                </div>
+                <div class="service-sublist-row">
+                  <span class="sublist-num">02</span>
+                  <span class="sublist-title">Adversarial Jailbreak Detection &amp; Red-Teaming</span>
+                </div>
+                <div class="service-sublist-row">
+                  <span class="sublist-num">03</span>
+                  <span class="sublist-title">FastAPI, Docker Containers &amp; Azure Cloud Deployment</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         "SELECTED WORKS /" (HORIZONTAL RIGHT-TO-LEFT SLIDE SHOWCASE)
+         3 Flagship Repositories of Abdul Wasay (wasxy47)
+         ====================================================================== -->
+    <section class="section-wrapper" id="works">
+      <div class="container">
+        <div class="works-slider-header">
+          <div class="editorial-header">
+            <div class="header-pre-badge">
+              <span class="badge-dot"></span>
+              <span class="section-tag">03 // FLAGSHIP ARCHIVES</span>
+            </div>
+            <h2 class="section-main-heading">SELECTED WORKS <span class="slash">/</span></h2>
+            <p class="section-sublead">
+              Production-grade AI safety gateways, knowledge graph reasoning agents, and live cloud applications. Explore right-to-left.
+            </p>
+          </div>
+
+          <!-- Slider Navigation & Stage Controls -->
+          <div class="slider-controls-panel">
+            <div class="slider-tabs-nav" role="tablist" aria-label="Flagship projects navigation">
+              <button class="slider-tab-btn active" data-slide="0" role="tab" aria-selected="true">
+                <span class="tab-index">01</span>
+                <span class="tab-name">MCP Sentinel</span>
+              </button>
+              <button class="slider-tab-btn" data-slide="1" role="tab" aria-selected="false">
+                <span class="tab-index">02</span>
+                <span class="tab-name">Smart Career</span>
+              </button>
+              <button class="slider-tab-btn" data-slide="2" role="tab" aria-selected="false">
+                <span class="tab-index">03</span>
+                <span class="tab-name">AI Learning Studio</span>
+              </button>
+            </div>
+
+            <div class="slider-arrows-wrap">
+              <button class="slider-arrow-btn prev-btn" id="project-prev" aria-label="Previous project slide">
+                <span class="arrow-glyph">&larr;</span>
+              </button>
+              <div class="slider-step-indicator">
+                <span id="slider-current-num">01</span>
+                <span class="divider">/</span>
+                <span class="total">03</span>
+              </div>
+              <button class="slider-arrow-btn next-btn" id="project-next" aria-label="Next project slide (Slides Right to Left)">
+                <span class="arrow-glyph">&rarr;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Stage / Carousel Viewport -->
+        <div class="works-slider-stage" id="works-slider-stage">
+          <div class="works-slide-track" id="works-slide-track">
+
+            <!-- ============================================================
+                 Slide 01: MCP Sentinel — AI Agent Security Gateway
+                 ============================================================ -->
+            <div class="works-slide-item active" data-slide-index="0">
+              <article class="project-card">
+                <div class="project-card-topbar">
+                  <div class="project-card-meta">
+                    <span class="project-num-tag">// 01</span>
+                    <span class="project-category-badge">AI Security &bull; Governance Gateway</span>
+                  </div>
+                  <div class="project-status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">620+ Tests &bull; Cedar WASM</span>
+                  </div>
+                </div>
+
+                <!-- Terminal Console Architecture Preview -->
+                <div class="project-console-frame">
+                  <div class="console-titlebar">
+                    <div class="console-controls">
+                      <span class="console-btn close"></span>
+                      <span class="console-btn min"></span>
+                      <span class="console-btn max"></span>
+                    </div>
+                    <div class="console-filepath">sentinel_policy.cedar &mdash; WASM Sandbox</div>
+                    <div class="console-badge">Cedar WASM Engine</div>
+                  </div>
+                  <div class="console-body">
+                    <div class="code-line"><span class="code-keyword">permit</span> (</div>
+                    <div class="code-line indent-1">principal <span class="code-operator">in</span> Role::<span class="code-string">"autonomous_agent"</span>,</div>
+                    <div class="code-line indent-1">action <span class="code-operator">in</span> [Action::<span class="code-string">"execute_tool"</span>, Action::<span class="code-string">"query_vector"</span>],</div>
+                    <div class="code-line indent-1">resource <span class="code-operator">in</span> Resource::<span class="code-string">"production_db"</span></div>
+                    <div class="code-line">) <span class="code-keyword">when</span> {</div>
+                    <div class="code-line indent-1">context.threat_score &lt;= <span class="code-number">0.05</span> &amp;&amp; context.audit_chained == <span class="code-builtin">true</span></div>
+                    <div class="code-line">};</div>
+                    <div class="console-output">
+                      <span class="out-success">[VERIFIED]</span> 21/21 Agentic Threat Vectors Neutralized &bull; SHA-256 Audit Chained
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-content-block">
+                  <div class="project-header-row">
+                    <h3 class="project-title">MCP Sentinel &mdash; AI Agent Security Gateway</h3>
+                    <span class="project-year">2026</span>
+                  </div>
+
+                  <p class="project-description">
+                    Inline Model Context Protocol (MCP) governance gateway engineered to mitigate 21 threat vectors, including tool poisoning, unauthorized lateral movement, and indirect prompt injection. Features the Cedar policy engine compiled to WebAssembly (WASM), real-time human-in-the-loop (HITL) approvals, SHA-256 chained tamper-evident audit trails, and an SRE observability dashboard backed by 620+ automated tests.
+                  </p>
+
+                  <div class="project-highlights-grid">
+                    <div class="highlight-item">
+                      <span class="hl-label">Core Engine</span>
+                      <span class="hl-value">Cedar Policy (WASM)</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">Threat Scope</span>
+                      <span class="hl-value">21 Attack Vectors</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">Audit Proof</span>
+                      <span class="hl-value">SHA-256 Hash Chain</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">Verification</span>
+                      <span class="hl-value">620+ Passing Tests</span>
+                    </div>
+                  </div>
+
+                  <div class="project-tags-wrap">
+                    <span class="tech-tag">AI Agent Security</span>
+                    <span class="tech-tag">MCP Gateway</span>
+                    <span class="tech-tag">Cedar WASM</span>
+                    <span class="tech-tag">Python 3.11</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Docker</span>
+                    <span class="tech-tag">SRE Observability</span>
+                  </div>
+
+                  <div class="project-actions">
+                    <a href="https://github.com/wasxy47/mcp-sentinel" target="_blank" rel="noopener" class="project-btn primary">
+                      <span>View Repository</span>
+                      <span class="btn-arrow">&nearr;</span>
+                    </a>
+                    <a href="https://github.com/wasxy47/mcp-sentinel#readme" target="_blank" rel="noopener" class="project-btn">
+                      <span>Architecture Specs</span>
+                      <span class="btn-arrow">&nearr;</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- ============================================================
+                 Slide 02: Smart Career Advisor — GraphRAG & Gemini 2.0
+                 ============================================================ -->
+            <div class="works-slide-item" data-slide-index="1">
+              <article class="project-card">
+                <div class="project-card-topbar">
+                  <div class="project-card-meta">
+                    <span class="project-num-tag">// 02</span>
+                    <span class="project-category-badge">Agentic AI &bull; Knowledge Graphs</span>
+                  </div>
+                  <div class="project-status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">GraphRAG + Gemini 2.0</span>
+                  </div>
+                </div>
+
+                <!-- Terminal Console Architecture Preview -->
+                <div class="project-console-frame">
+                  <div class="console-titlebar">
+                    <div class="console-controls">
+                      <span class="console-btn close"></span>
+                      <span class="console-btn min"></span>
+                      <span class="console-btn max"></span>
+                    </div>
+                    <div class="console-filepath">career_graph_rag.py &mdash; Graph Query Stream</div>
+                    <div class="console-badge">Knowledge Graph Engine</div>
+                  </div>
+                  <div class="console-body">
+                    <div class="code-line"><span class="code-comment"># GraphRAG Entity Resolution &amp; Trajectory Mapping</span></div>
+                    <div class="code-line"><span class="code-keyword">async def</span> <span class="code-func">resolve_career_path</span>(target_role: <span class="code-builtin">str</span>, user_skills: <span class="code-builtin">list</span>):</div>
+                    <div class="code-line indent-1">graph_nodes = <span class="code-keyword">await</span> knowledge_graph.extract_subgraph(target_role)</div>
+                    <div class="code-line indent-1">skill_distance = vector_index.compute_semantic_gap(user_skills, graph_nodes)</div>
+                    <div class="code-line indent-1">roadmap = <span class="code-keyword">await</span> gemini_client.generate_milestones(skill_distance, depth=<span class="code-number">4</span>)</div>
+                    <div class="code-line indent-1"><span class="code-keyword">return</span> GraphResponse(trajectory=roadmap, topology_nodes=graph_nodes.count)</div>
+                    <div class="console-output">
+                      <span class="out-success">[RESOLVED]</span> 1,420 Career Nodes &bull; 4,890 Vector Edges &bull; Zero Hallucinations via Grounded Graph
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-content-block">
+                  <div class="project-header-row">
+                    <h3 class="project-title">Smart Career Advisor &mdash; GraphRAG Agent</h3>
+                    <span class="project-year">2026</span>
+                  </div>
+
+                  <p class="project-description">
+                    Enterprise-grade Career Advisory Agent utilizing GraphRAG (Knowledge Graph entity mapping + vector embeddings) integrated with Google Gemini 2.0. Constructs interactive 3D career trajectory graphs, performs semantic skill gap analysis against enterprise role benchmarks, and synthesizes deterministic milestone roadmaps with local embeddings.
+                  </p>
+
+                  <div class="project-highlights-grid">
+                    <div class="highlight-item">
+                      <span class="hl-label">Architecture</span>
+                      <span class="hl-value">GraphRAG + Vector DB</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">LLM Backbone</span>
+                      <span class="hl-value">Google Gemini 2.0</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">Visualization</span>
+                      <span class="hl-value">3D Trajectory Graphs</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">Embeddings</span>
+                      <span class="hl-value">Local Vector Search</span>
+                    </div>
+                  </div>
+
+                  <div class="project-tags-wrap">
+                    <span class="tech-tag">GraphRAG</span>
+                    <span class="tech-tag">Google Gemini 2.0</span>
+                    <span class="tech-tag">Knowledge Graphs</span>
+                    <span class="tech-tag">FastAPI</span>
+                    <span class="tech-tag">3D Data Topology</span>
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">Network Analysis</span>
+                  </div>
+
+                  <div class="project-actions">
+                    <a href="https://github.com/wasxy47/Smart_Career_Advisor" target="_blank" rel="noopener" class="project-btn primary">
+                      <span>View Repository</span>
+                      <span class="btn-arrow">&nearr;</span>
+                    </a>
+                    <a href="https://github.com/wasxy47/Smart_Career_Advisor#readme" target="_blank" rel="noopener" class="project-btn">
+                      <span>Interactive Specs</span>
+                      <span class="btn-arrow">&nearr;</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <!-- ============================================================
+                 Slide 03: AI Learning Studio — Interactive Ed-Tech Platform
+                 ============================================================ -->
+            <div class="works-slide-item" data-slide-index="2">
+              <article class="project-card">
+                <div class="project-card-topbar">
+                  <div class="project-card-meta">
+                    <span class="project-num-tag">// 03</span>
+                    <span class="project-category-badge">Full-Stack SaaS &bull; Production Platform</span>
+                  </div>
+                  <div class="project-status-indicator live-indicator">
+                    <span class="status-dot ping"></span>
+                    <span class="status-text">Live in Production &bull; Vercel</span>
+                  </div>
+                </div>
+
+                <!-- Interactive Live UI Preview Mockup -->
+                <div class="project-console-frame live-ui-frame">
+                  <div class="console-titlebar">
+                    <div class="console-controls">
+                      <span class="console-btn close"></span>
+                      <span class="console-btn min"></span>
+                      <span class="console-btn max"></span>
+                    </div>
+                    <div class="console-filepath">https://ai-learning-app-two.vercel.app</div>
+                    <div class="console-badge live-beacon">⚡ Production Live</div>
+                  </div>
+                  <div class="live-ui-preview">
+                    <div class="preview-header-bar">
+                      <div class="preview-logo-text">AI LEARNING STUDIO</div>
+                      <div class="preview-pills-row">
+                        <span class="preview-pill">8 Active Courses</span>
+                        <span class="preview-pill">Adaptive Quizzes</span>
+                        <span class="preview-pill">Persistent Chat Memory</span>
+                      </div>
+                    </div>
+                    <div class="preview-cards-grid">
+                      <div class="preview-card-item">
+                        <div class="card-item-kicker">Module 04 // LLM Architecture</div>
+                        <div class="card-item-title">Transformers, Self-Attention &amp; Tokenization</div>
+                        <div class="card-item-progress">
+                          <div class="progress-bar-fill" style="width: 82%;"></div>
+                        </div>
+                      </div>
+                      <div class="preview-chat-item">
+                        <div class="chat-header">
+                          <span class="bot-dot"></span>
+                          <span class="bot-name">AI Tutor [Groq 750 T/s]</span>
+                        </div>
+                        <p class="chat-text">"In multi-head attention, queries and keys project onto orthogonal subspaces before softmax score calculation..."</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="project-content-block">
+                  <div class="project-header-row">
+                    <h3 class="project-title">AI Learning Studio &mdash; Ed-Tech Platform</h3>
+                    <span class="project-year">2025</span>
+                  </div>
+
+                  <p class="project-description">
+                    Full-stack production educational platform engineered to teach modern Artificial Intelligence. Features 8 comprehensive courses, an intelligent conversational AI tutor with persistent memory, real-time adaptive quizzes, and student mastery metrics. Shipped with Next.js, Firebase Auth &amp; Firestore, and Groq ultra-low-latency LLM inference.
+                  </p>
+
+                  <div class="project-highlights-grid">
+                    <div class="highlight-item">
+                      <span class="hl-label">Live Deployment</span>
+                      <span class="hl-value">ai-learning-app-two.vercel.app</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">Course Library</span>
+                      <span class="hl-value">8 Comprehensive Modules</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">AI Tutor Core</span>
+                      <span class="hl-value">Groq LLM + Persistent Memory</span>
+                    </div>
+                    <div class="highlight-item">
+                      <span class="hl-label">Full Stack</span>
+                      <span class="hl-value">Next.js 14 &bull; Firebase &bull; Tailwind</span>
+                    </div>
+                  </div>
+
+                  <div class="project-tags-wrap">
+                    <span class="tech-tag">Next.js 14</span>
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">Firebase Auth</span>
+                    <span class="tech-tag">Firestore</span>
+                    <span class="tech-tag">Groq API</span>
+                    <span class="tech-tag">TailwindCSS</span>
+                    <span class="tech-tag">Production SaaS</span>
+                  </div>
+
+                  <div class="project-actions">
+                    <a href="https://ai-learning-app-two.vercel.app" target="_blank" rel="noopener" class="project-btn primary glow-btn">
+                      <span>Launch Live Platform</span>
+                      <span class="btn-arrow">&nearr;</span>
+                    </a>
+                    <a href="https://github.com/wasxy47/ai-learning-app" target="_blank" rel="noopener" class="project-btn">
+                      <span>View Repository</span>
+                      <span class="btn-arrow">&nearr;</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+          </div>
+
+          <!-- Bottom Visual Slider Progress Bar -->
+          <div class="slider-progress-bar">
+            <div class="slider-progress-fill" id="slider-progress-fill" style="width: 33.33%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         "ABOUT & SKILLS /" (BENTO ARSENAL & EXECUTIVE PHILOSOPHY)
+         ====================================================================== -->
+    <section class="section-wrapper" id="about">
+      <div class="container">
+        <div class="editorial-header">
+          <div class="header-pre-badge">
+            <span class="badge-dot"></span>
+            <span class="section-tag">04 // THE ARCHITECT &amp; ARSENAL</span>
+          </div>
+          <h2 class="section-main-heading">PHILOSOPHY &amp; SKILLS <span class="slash">/</span></h2>
+          <p class="section-sublead">
+            Bridging probabilistic foundation models with deterministic software architecture, adversarial robustness, and production resilience.
+          </p>
+        </div>
+
+        <div class="about-bento-grid">
+          <!-- Left Main Card: Executive Identity & Bio -->
+          <div class="about-card identity-card">
+            <div class="identity-top">
+              <span class="identity-kicker">// GENERATIVE AI ENGINEER</span>
+              <h3 class="identity-name">ABDUL WASAY</h3>
+              <p class="identity-lead">
+                I engineer production-grade LLM systems, scalable autonomous agents, and adversarial safety layers that transform frontier AI research into battle-tested software.
+              </p>
+            </div>
+
+            <div class="identity-body-text">
+              <p>
+                My engineering philosophy focuses on <strong>reliability, verifiability, and low-latency execution</strong>. Rather than relying on simple prompt wraps, I construct hardened architectures incorporating WebAssembly policy gates, deterministic knowledge graphs, and hybrid lexical-semantic retrieval engines.
+              </p>
+              <p>
+                Currently pursuing a <strong>BS in Software Engineering at Iqra University</strong> (2023&ndash;2027) while deploying mission-critical systems across governmental aviation data infrastructure and production AI startups.
+              </p>
+              <p>
+                Certified by IBM on Coursera with the <strong>IBM Generative AI Engineering Professional Certificate</strong> (July 2026).
+              </p>
+            </div>
+
+            <div class="identity-telemetry-row">
+              <div class="telemetry-pill">
+                <span class="telemetry-icon">&bull;</span>
+                <span class="telemetry-label">Status:</span>
+                <span class="telemetry-val highlight">Available for GenAI Roles</span>
+              </div>
+              <div class="telemetry-pill">
+                <span class="telemetry-label">Base:</span>
+                <span class="telemetry-val">Karachi, Pakistan (UTC+5)</span>
+              </div>
+              <div class="telemetry-pill">
+                <span class="telemetry-label">Credentials:</span>
+                <span class="telemetry-val">IBM Certified &bull; 620+ Unit Tests</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: 4 Categorized Bento Skill Cards -->
+          <div class="arsenal-cards-col">
+
+            <!-- Category 01: Foundation Models & Agentic AI -->
+            <div class="about-card skill-bento-card">
+              <div class="skill-card-header">
+                <div class="skill-header-left">
+                  <span class="skill-num">01</span>
+                  <h4 class="skill-category-heading">Foundation Models &amp; Agentic AI</h4>
+                </div>
+                <span class="skill-category-tag">Inference &amp; Reasoning</span>
+              </div>
+              <div class="skill-pills-wrap">
+                <span class="pill-chip">Google Gemini 2.0</span>
+                <span class="pill-chip">Claude 3.5</span>
+                <span class="pill-chip">Qwen 2.5</span>
+                <span class="pill-chip">LangChain</span>
+                <span class="pill-chip">Autonomous Multi-Agent Swarms</span>
+                <span class="pill-chip">Chain-of-Thought (CoT)</span>
+                <span class="pill-chip">Prompt Engineering &amp; Structured Outputs</span>
+                <span class="pill-chip">Groq High-Throughput Inference</span>
+              </div>
+            </div>
+
+            <!-- Category 02: Adversarial Safety & Red-Teaming -->
+            <div class="about-card skill-bento-card">
+              <div class="skill-card-header">
+                <div class="skill-header-left">
+                  <span class="skill-num">02</span>
+                  <h4 class="skill-category-heading">Adversarial Safety &amp; Red-Teaming</h4>
+                </div>
+                <span class="skill-category-tag">AI Defense</span>
+              </div>
+              <div class="skill-pills-wrap">
+                <span class="pill-chip">Model Context Protocol (MCP)</span>
+                <span class="pill-chip">Cedar Policy Engine (WASM)</span>
+                <span class="pill-chip">Jailbreak Detection &amp; Neutralization</span>
+                <span class="pill-chip">Prompt Injection Defense</span>
+                <span class="pill-chip">Adversarial Red-Teaming Suites</span>
+                <span class="pill-chip">SHA-256 Chained Audit Trails</span>
+                <span class="pill-chip">Human-in-the-Loop (HITL) Gates</span>
+              </div>
+            </div>
+
+            <!-- Category 03: Vector Search & Information Retrieval -->
+            <div class="about-card skill-bento-card">
+              <div class="skill-card-header">
+                <div class="skill-header-left">
+                  <span class="skill-num">03</span>
+                  <h4 class="skill-category-heading">Vector Search &amp; Information Retrieval</h4>
+                </div>
+                <span class="skill-category-tag">Zero Hallucinations</span>
+              </div>
+              <div class="skill-pills-wrap">
+                <span class="pill-chip">GraphRAG &amp; Knowledge Graphs</span>
+                <span class="pill-chip">ChromaDB</span>
+                <span class="pill-chip">FAISS Vector Search</span>
+                <span class="pill-chip">BM25 Sparse Lexical Search</span>
+                <span class="pill-chip">Cross-Encoder Re-Ranking</span>
+                <span class="pill-chip">Reciprocal Rank Fusion (RRF)</span>
+                <span class="pill-chip">Semantic Chunking &amp; Embeddings</span>
+              </div>
+            </div>
+
+            <!-- Category 04: Full-Stack Engineering & Cloud Infrastructure -->
+            <div class="about-card skill-bento-card">
+              <div class="skill-card-header">
+                <div class="skill-header-left">
+                  <span class="skill-num">04</span>
+                  <h4 class="skill-category-heading">Full-Stack &amp; Cloud Infrastructure</h4>
+                </div>
+                <span class="skill-category-tag">Production Systems</span>
+              </div>
+              <div class="skill-pills-wrap">
+                <span class="pill-chip">Python (Advanced 3.11+)</span>
+                <span class="pill-chip">FastAPI Microservices</span>
+                <span class="pill-chip">TypeScript &amp; JavaScript</span>
+                <span class="pill-chip">Next.js 14 / React</span>
+                <span class="pill-chip">ASP.NET (C#)</span>
+                <span class="pill-chip">SQL Server &amp; Relational Schema</span>
+                <span class="pill-chip">Docker Containerization</span>
+                <span class="pill-chip">Microsoft Azure</span>
+                <span class="pill-chip">Git &amp; CI/CD Pipelines</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         "EXPERIENCE /" (CAREER TRAJECTORY & ACADEMIC CREDENTIALS)
+         ====================================================================== -->
+    <section class="section-wrapper" id="experience">
+      <div class="container">
+        <div class="editorial-header">
+          <div class="header-pre-badge">
+            <span class="badge-dot"></span>
+            <span class="section-tag">05 // TRAJECTORY &amp; CREDENTIALS</span>
+          </div>
+          <h2 class="section-main-heading">EXPERIENCE <span class="slash">/</span></h2>
+          <p class="section-sublead">
+            Delivering mission-critical engineering across governmental aviation infrastructure, production AI startups, and accredited professional bodies.
+          </p>
+        </div>
+
+        <div class="experience-timeline-container">
+          <div class="timeline-line-track"></div>
+
+          <!-- Timeline Item 01: Pakistan Airport Authority -->
+          <div class="timeline-entry">
+            <div class="timeline-indicator">
+              <div class="indicator-core"></div>
+            </div>
+            <div class="timeline-content-card">
+              <div class="timeline-header">
+                <div class="timeline-role-block">
+                  <span class="timeline-role">Software Developer Intern</span>
+                  <h3 class="timeline-company">Pakistan Airport Authority (PAA)</h3>
+                </div>
+                <div class="timeline-meta-badges">
+                  <span class="badge-period">07/2026 &mdash; 08/2026</span>
+                  <span class="badge-mode">Onsite &bull; Karachi, Pakistan</span>
+                </div>
+              </div>
+              <p class="timeline-summary">
+                Contributed to aviation operational systems with high-reliability requirements, focusing on enterprise database integrity and end-to-end web workflows.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Developed a full-stack internal enterprise web application using ASP.NET (C#), bridging secure user interfaces with robust back-end business logic.</li>
+                <li>Architected and optimized SQL Server database schema, including relational constraints, stored procedures, and high-integrity queries for aviation records.</li>
+                <li>Collaborated within a rigorous engineering team to deliver a production-ready internal platform meeting tight deadlines.</li>
+              </ul>
+              <div class="timeline-tech-stack">
+                <span class="tech-tag">ASP.NET (C#)</span>
+                <span class="tech-tag">SQL Server</span>
+                <span class="tech-tag">Enterprise Architecture</span>
+                <span class="tech-tag">Aviation Data Systems</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 02: NeuroAGI -->
+          <div class="timeline-entry">
+            <div class="timeline-indicator">
+              <div class="indicator-core"></div>
+            </div>
+            <div class="timeline-content-card">
+              <div class="timeline-header">
+                <div class="timeline-role-block">
+                  <span class="timeline-role">ML &amp; GenAI Engineer Intern</span>
+                  <h3 class="timeline-company">NeuroAGI</h3>
+                </div>
+                <div class="timeline-meta-badges">
+                  <span class="badge-period">11/2025 &mdash; 03/2026</span>
+                  <span class="badge-mode">Remote &bull; Applied AI</span>
+                </div>
+              </div>
+              <p class="timeline-summary">
+                Engineered enterprise-grade Retrieval-Augmented Generation (RAG) pipelines and scalable cloud microservices for real-time document intelligence.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Designed and deployed production RAG pipelines using FAISS and ChromaDB with embedding-based semantic search for zero-hallucination enterprise document Q&amp;A.</li>
+                <li>Engineered high-throughput RESTful microservices with FastAPI, incorporating Pydantic validation, structured telemetry, and rate limiting.</li>
+                <li>Containerized AI microservices with Docker and orchestrated deployment onto Microsoft Azure across staging and production environments.</li>
+              </ul>
+              <div class="timeline-tech-stack">
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">ChromaDB</span>
+                <span class="tech-tag">FAISS</span>
+                <span class="tech-tag">Docker</span>
+                <span class="tech-tag">Microsoft Azure</span>
+                <span class="tech-tag">RAG Pipelines</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 03: Iqra University -->
+          <div class="timeline-entry">
+            <div class="timeline-indicator">
+              <div class="indicator-core"></div>
+            </div>
+            <div class="timeline-content-card">
+              <div class="timeline-header">
+                <div class="timeline-role-block">
+                  <span class="timeline-role">BS in Software Engineering</span>
+                  <h3 class="timeline-company">Iqra University</h3>
+                </div>
+                <div class="timeline-meta-badges">
+                  <span class="badge-period">2023 &mdash; 2027 (Expected)</span>
+                  <span class="badge-mode">Karachi, Pakistan</span>
+                </div>
+              </div>
+              <p class="timeline-summary">
+                Undergraduate degree emphasizing foundational computer science, algorithm design, software architecture, and distributed intelligence.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Comprehensive study in Data Structures &amp; Algorithms, Database Management Systems, Distributed Computing, Object-Oriented Software Design, and Artificial Intelligence.</li>
+                <li>Consistently applying theoretical principles to open-source production projects and research benchmarks.</li>
+              </ul>
+              <div class="timeline-tech-stack">
+                <span class="tech-tag">Algorithms &amp; Data Structures</span>
+                <span class="tech-tag">Distributed Systems</span>
+                <span class="tech-tag">Database Engineering</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Timeline Item 04: IBM Certification -->
+          <div class="timeline-entry">
+            <div class="timeline-indicator">
+              <div class="indicator-core"></div>
+            </div>
+            <div class="timeline-content-card">
+              <div class="timeline-header">
+                <div class="timeline-role-block">
+                  <span class="timeline-role">IBM Generative AI Engineering Professional Certificate</span>
+                  <h3 class="timeline-company">Coursera / IBM</h3>
+                </div>
+                <div class="timeline-meta-badges">
+                  <span class="badge-period">Issued July 2026</span>
+                  <span class="badge-mode">Verified Professional Credential</span>
+                </div>
+              </div>
+              <p class="timeline-summary">
+                Rigorous professional certification program validating expertise in frontier Generative AI engineering and deployment workflows.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Deep-dive curriculum covering Foundation Models, Prompt Engineering, RAG Systems, Multi-Agent Coordination, and Generative AI Application Lifecycle.</li>
+              </ul>
+              <div class="timeline-tech-stack">
+                <span class="tech-tag">IBM Certified</span>
+                <span class="tech-tag">Generative AI Engineering</span>
+                <span class="tech-tag">LLM Architecture</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         "LET'S TALK /" (COMMAND CENTER UPLINK & SECURE TRANSMISSION)
+         ====================================================================== -->
+    <section class="section-wrapper" id="contact">
+      <div class="container">
+        <div class="editorial-header">
+          <div class="header-pre-badge">
+            <span class="badge-dot pulse-amber"></span>
+            <span class="section-tag">06 // SECURE UPLINK</span>
+          </div>
+          <h2 class="section-main-heading">INITIATE CONTACT <span class="slash">/</span></h2>
+          <p class="section-sublead">
+            Available for Generative AI engineering roles, agentic systems consulting, and high-impact software challenges worldwide.
+          </p>
+        </div>
+
+        <div class="contact-terminal-grid">
+          <!-- Left Column: Direct Uplink Channels with Interactive World Map Theme -->
+          <div class="contact-channels-card">
+            <!-- Global World Map Ambient Backdrop -->
+            <div class="world-map-backdrop" aria-hidden="true">
+              <svg class="world-map-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <radialGradient id="beaconGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e29d52" stop-opacity="0.9"/>
+                    <stop offset="50%" stop-color="#e29d52" stop-opacity="0.25"/>
+                    <stop offset="100%" stop-color="#e29d52" stop-opacity="0"/>
+                  </radialGradient>
+                  <linearGradient id="arcGrad1" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#22c55e" stop-opacity="0.7"/>
+                    <stop offset="100%" stop-color="#e29d52" stop-opacity="0.9"/>
+                  </linearGradient>
+                </defs>
+                <!-- World Map Continent Vectors (Dotted & Outlined) -->
+                <g class="map-continents" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.2" fill="rgba(255, 255, 255, 0.02)">
+                  <!-- North America -->
+                  <path d="M120,70 Q190,50 270,90 T320,160 T270,240 T220,280 T170,230 T110,140 Z" />
+                  <!-- South America -->
+                  <path d="M250,290 Q300,310 330,380 T290,460 T250,440 T230,350 Z" />
+                  <!-- Europe & UK -->
+                  <path d="M470,80 Q530,70 570,110 T530,170 T460,160 T440,110 Z" />
+                  <!-- Africa -->
+                  <path d="M460,190 Q550,180 580,260 T560,380 T500,400 T450,310 T430,230 Z" />
+                  <!-- Asia & Middle East -->
+                  <path d="M570,70 Q710,60 810,110 T860,220 T770,280 T650,230 T590,150 Z" />
+                  <!-- Australia -->
+                  <path d="M770,330 Q850,320 880,380 T830,440 T750,410 Z" />
+                </g>
+                <!-- Coordinate Matrix Grid Lines -->
+                <g class="map-grid" stroke="rgba(255, 255, 255, 0.04)" stroke-width="0.75" stroke-dasharray="4,6">
+                  <line x1="0" y1="125" x2="1000" y2="125" />
+                  <line x1="0" y1="250" x2="1000" y2="250" />
+                  <line x1="0" y1="375" x2="1000" y2="375" />
+                  <line x1="250" y1="0" x2="250" y2="500" />
+                  <line x1="500" y1="0" x2="500" y2="500" />
+                  <line x1="750" y1="0" x2="750" y2="500" />
+                </g>
+                <!-- Telemetry Flight Arcs Centered at Karachi (x=660, y=225) -->
+                <!-- Karachi -> London (490, 120) -->
+                <path d="M660,225 Q570,135 490,120" stroke="url(#arcGrad1)" stroke-width="1.6" stroke-dasharray="4,4" fill="none" class="flight-arc arc-london"/>
+                <!-- Karachi -> Silicon Valley (200, 140) -->
+                <path d="M660,225 Q430,75 200,140" stroke="rgba(226, 157, 82, 0.45)" stroke-width="1.4" stroke-dasharray="3,4" fill="none" class="flight-arc arc-sv"/>
+                <!-- Karachi -> Singapore & Tokyo (820, 250) -->
+                <path d="M660,225 Q740,215 820,250" stroke="rgba(34, 197, 94, 0.5)" stroke-width="1.4" stroke-dasharray="3,4" fill="none" class="flight-arc arc-tokyo"/>
+                <!-- Global Destination Hub Nodes -->
+                <circle cx="200" cy="140" r="3.5" fill="#ffffff" opacity="0.7"/> <!-- Silicon Valley -->
+                <circle cx="490" cy="120" r="3.5" fill="#ffffff" opacity="0.7"/> <!-- London -->
+                <circle cx="820" cy="250" r="3.5" fill="#ffffff" opacity="0.7"/> <!-- Tokyo / Singapore -->
+                <!-- Karachi Master Epicenter with Multi-Stage Radar Waves -->
+                <circle cx="660" cy="225" r="24" fill="url(#beaconGlow)" class="beacon-pulse-glow"/>
+                <circle cx="660" cy="225" r="10" stroke="#e29d52" stroke-width="1.5" fill="none" class="beacon-radar-wave"/>
+                <circle cx="660" cy="225" r="4.5" fill="#22c55e" class="beacon-center-dot"/>
+              </svg>
+              <!-- Ambient World Telemetry Badge -->
+              <div class="map-hud-readout">
+                <span class="hud-status-dot"></span>
+                <span class="hud-location">BASE: KARACHI, PK (24.8607&deg; N, 67.0011&deg; E) // GLOBAL REMOTE ACTIVE</span>
+              </div>
+            </div>
+
+            <!-- Foreground Content Layer -->
+            <div class="contact-channels-content">
+              <div class="uplink-headline-block">
+                <span class="uplink-status-badge">
+                  <span class="status-dot ping-green"></span>
+                  <span>OPEN TO HIGH-IMPACT OPPORTUNITIES</span>
+                </span>
+                <h3 class="uplink-callout-title">
+                  READY TO BUILD SOMETHING EXTRAORDINARY?
+                </h3>
+                <p class="uplink-callout-desc">
+                  Whether you are architecting a mission-critical autonomous agent pipeline, scaling zero-hallucination RAG, or building resilient AI safety layers &mdash; let's engineer the future together.
+                </p>
+              </div>
+
+              <div class="direct-channels-list">
+                <!-- Direct Email -->
+                <a href="mailto:wasxy47@gmail.com" class="channel-row-link">
+                  <div class="channel-icon-col">&#x2709;</div>
+                  <div class="channel-info-col">
+                    <span class="channel-label">Direct Email</span>
+                    <span class="channel-value">wasxy47@gmail.com</span>
+                  </div>
+                  <span class="channel-arrow">&nearr;</span>
+                </a>
+
+                <!-- Phone / WhatsApp -->
+                <a href="https://wa.me/923132768054" target="_blank" rel="noopener" class="channel-row-link">
+                  <div class="channel-icon-col">&#x260E;</div>
+                  <div class="channel-info-col">
+                    <span class="channel-label">Phone &bull; WhatsApp</span>
+                    <span class="channel-value">+92 313 2768054</span>
+                  </div>
+                  <span class="channel-arrow">&nearr;</span>
+                </a>
+
+                <!-- LinkedIn -->
+                <a href="https://linkedin.com/in/abdul-wasay-sheikh-xox" target="_blank" rel="noopener" class="channel-row-link">
+                  <div class="channel-icon-col">&#x1F517;</div>
+                  <div class="channel-info-col">
+                    <span class="channel-label">LinkedIn</span>
+                    <span class="channel-value">abdul-wasay-sheikh-xox</span>
+                  </div>
+                  <span class="channel-arrow">&nearr;</span>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/wasxy47" target="_blank" rel="noopener" class="channel-row-link">
+                  <div class="channel-icon-col">&#x1F47E;</div>
+                  <div class="channel-info-col">
+                    <span class="channel-label">GitHub Archive</span>
+                    <span class="channel-value">github.com/wasxy47</span>
+                  </div>
+                  <span class="channel-arrow">&nearr;</span>
+                </a>
+
+                <!-- Location / Timezone -->
+                <div class="channel-row-link static-item">
+                  <div class="channel-icon-col">&#x1F30E;</div>
+                  <div class="channel-info-col">
+                    <span class="channel-label">Location &amp; Time Zone</span>
+                    <span class="channel-value">Karachi, Pakistan &bull; PKT (UTC+5)</span>
+                  </div>
+                  <span class="channel-badge">Global Remote</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Minimalist Transmission Terminal Form -->
+          <div class="contact-transmission-card">
+            <div class="terminal-card-header">
+              <div class="terminal-dots">
+                <span class="tdot red"></span>
+                <span class="tdot yellow"></span>
+                <span class="tdot green"></span>
+              </div>
+              <div class="terminal-title">transmission_uplink.sh &mdash; Direct Dispatch</div>
+              <span class="terminal-encrypt-badge">256-Bit Encrypted</span>
+            </div>
+
+            <form class="transmission-form" id="contact-form" onsubmit="event.preventDefault(); const btn = this.querySelector('button[type=submit]'); btn.disabled = true; btn.innerHTML = 'Transmission Received &#x2713;'; alert('Message transmission successfully received! Abdul Wasay will respond to your inquiry shortly.');">
+              <div class="form-row-grid">
+                <div class="form-input-group">
+                  <label for="form-name">Your Full Name</label>
+                  <input type="text" id="form-name" class="terminal-input" placeholder="e.g. Alex Mercer" required>
+                </div>
+                <div class="form-input-group">
+                  <label for="form-email">Your Email Address</label>
+                  <input type="email" id="form-email" class="terminal-input" placeholder="e.g. alex@company.com" required>
+                </div>
+              </div>
+
+              <div class="form-input-group">
+                <label for="form-topic">Project Scope / Inquiry Type</label>
+                <select id="form-topic" class="terminal-input select-input" required>
+                  <option value="" disabled selected>Select Inquiry Scope...</option>
+                  <option value="full-time">Full-time Generative AI Engineering Role</option>
+                  <option value="agentic-architecture">Agentic AI Architecture / Multi-Agent Systems</option>
+                  <option value="rag-pipeline">Enterprise RAG / Vector Search Implementation</option>
+                  <option value="ai-safety">AI Safety / Adversarial Red-Teaming</option>
+                  <option value="consulting">Technical Consulting / Contract Project</option>
+                  <option value="general">Other Technical Inquiry</option>
+                </select>
+              </div>
+
+              <div class="form-input-group">
+                <label for="form-message">Transmission Details</label>
+                <textarea id="form-message" class="terminal-input textarea-input" rows="5" placeholder="Outline your technical project, objectives, tech stack, or proposed timeline..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-transmit">
+                <span class="transmit-label">TRANSMIT MESSAGE</span>
+                <span class="transmit-arrow">&nearr;</span>
+              </button>
+
+              <div class="form-guarantee">
+                <span class="guarantee-icon">&#x26A1;</span>
+                <span>Direct transmission to Abdul Wasay &bull; Expected response within 24 hours.</span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER (MONOLITHIC EDITORIAL DESIGN)
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content-wrap">
+      <div class="footer-top-brand">
+        <div class="footer-brand-title">ABDUL WASAY</div>
+        <div class="footer-brand-sub">GENERATIVE AI ENGINEER &bull; ARCHITECT &bull; SYSTEM BUILDER</div>
+      </div>
+
+      <div class="footer-nav-grid">
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Navigation</span>
+          <a href="#hero" class="footer-nav-link">[01] Origin // Hero</a>
+          <a href="#services" class="footer-nav-link">[02] Capabilities</a>
+          <a href="#works" class="footer-nav-link">[03] Selected Works</a>
+          <a href="#about" class="footer-nav-link">[04] Philosophy &amp; Arsenal</a>
+          <a href="#experience" class="footer-nav-link">[05] Trajectory</a>
+          <a href="#contact" class="footer-nav-link">[06] Secure Uplink</a>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Selected Repositories</span>
+          <a href="https://github.com/wasxy47/mcp-sentinel" target="_blank" rel="noopener" class="footer-nav-link">MCP Sentinel (AI Security) &nearr;</a>
+          <a href="https://github.com/wasxy47/Smart_Career_Advisor" target="_blank" rel="noopener" class="footer-nav-link">Smart Career Advisor (GraphRAG) &nearr;</a>
+          <a href="https://github.com/wasxy47/jailbreak-guard-qwen2.5" target="_blank" rel="noopener" class="footer-nav-link">Jailbreak Guard Qwen2.5 &nearr;</a>
+          <a href="https://ai-learning-app-two.vercel.app" target="_blank" rel="noopener" class="footer-nav-link">AI Learning Studio (Live) &nearr;</a>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-col-title">Direct Uplinks</span>
+          <a href="mailto:wasxy47@gmail.com" class="footer-nav-link">Email: wasxy47@gmail.com</a>
+          <a href="https://linkedin.com/in/abdul-wasay-sheikh-xox" target="_blank" rel="noopener" class="footer-nav-link">LinkedIn Profile &nearr;</a>
+          <a href="https://github.com/wasxy47" target="_blank" rel="noopener" class="footer-nav-link">GitHub Archive (@wasxy47) &nearr;</a>
+          <a href="https://wa.me/923132768054" target="_blank" rel="noopener" class="footer-nav-link">WhatsApp: +92 313 2768054</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div class="footer-copy-text">
+          &copy; 2026 Abdul Wasay. Engineered with dark cosmic precision. All rights reserved.
+        </div>
+        <div class="footer-bottom-actions">
+          <span class="location-beacon">
+            <span class="beacon-dot"></span> Karachi, Pakistan &bull; PKT (UTC+5)
+          </span>
+          <a href="#hero" class="back-to-top-btn">
+            <span>Back to Origin</span>
+            <span class="top-arrow">&uarr;</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js?v=20261002_3"></script>
 </body>
-
 </html>

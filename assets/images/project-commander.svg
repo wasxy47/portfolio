@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="800" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#040714"/>
+      <stop offset="50%" stop-color="#091428"/>
+      <stop offset="100%" stop-color="#02040a"/>
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg3)"/>
+  <circle cx="400" cy="225" r="230" fill="url(#cyanGlow)"/>
+
+  <!-- Radar sweep circles -->
+  <g stroke="rgba(6,182,212,0.15)" stroke-width="1">
+    <circle cx="400" cy="225" r="70"/>
+    <circle cx="400" cy="225" r="130"/>
+    <circle cx="400" cy="225" r="190"/>
+    <line x1="400" y1="35" x2="400" y2="415"/>
+    <line x1="210" y1="225" x2="590" y2="225"/>
+  </g>
+
+  <!-- Agent Network Nodes -->
+  <g transform="translate(400, 225)">
+    <!-- Center Triage Agent -->
+    <circle r="36" fill="#0c233c" stroke="#06b6d4" stroke-width="2.5"/>
+    <text x="0" y="5" font-family="Space Grotesk" font-size="12" font-weight="700" fill="#ffffff" text-anchor="middle">TRIAGE</text>
+
+    <!-- Branch Nodes -->
+    <line x1="-120" y1="-70" x2="-35" y2="-20" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <circle cx="-120" cy="-70" r="24" fill="#081b30" stroke="rgba(255,255,255,0.2)"/>
+    <text x="-120" y="-66" font-family="JetBrains Mono" font-size="9" fill="#9ca3af" text-anchor="middle">ROOT CAUSE</text>
+
+    <line x1="120" y1="-70" x2="35" y2="-20" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <circle cx="120" cy="-70" r="24" fill="#081b30" stroke="rgba(255,255,255,0.2)"/>
+    <text x="120" y="-66" font-family="JetBrains Mono" font-size="9" fill="#9ca3af" text-anchor="middle">SEVERITY</text>
+
+    <line x1="0" y1="90" x2="0" y2="36" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4 4"/>
+    <circle cx="0" cy="90" r="24" fill="#081b30" stroke="#f43f5e" stroke-width="1.5"/>
+    <text x="0" y="94" font-family="JetBrains Mono" font-size="9" fill="#f43f5e" text-anchor="middle">ESCALATION</text>
+  </g>
+
+  <!-- Header & Metadata -->
+  <g font-family="JetBrains Mono, monospace" font-size="11">
+    <rect x="50" y="35" width="700" height="34" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+    <text x="70" y="56" fill="#f1f0ed">AI INCIDENT COMMANDER // AUTONOMOUS IT TRIAGE</text>
+    <text x="630" y="56" fill="#06b6d4">AUTONOMOUS SRE</text>
+
+    <!-- Metrics -->
+    <g transform="translate(70, 140)">
+      <rect width="170" height="58" rx="8" fill="#091b30" stroke="rgba(6,182,212,0.4)"/>
+      <text x="14" y="24" fill="#64748b" font-size="10">ORCHESTRATION</text>
+      <text x="14" y="44" fill="#ffffff" font-size="13" font-weight="600">LANGCHAIN + GROQ</text>
+    </g>
+
+    <g transform="translate(560, 140)">
+      <rect width="170" height="58" rx="8" fill="#091b30" stroke="rgba(6,182,212,0.4)"/>
+      <text x="14" y="24" fill="#64748b" font-size="10">RESOLUTION TIME</text>
+      <text x="14" y="44" fill="#22c55e" font-size="13" font-weight="600">SUB-SECOND ROUTING</text>
+    </g>
+  </g>
+</svg>
